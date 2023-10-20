@@ -28,7 +28,7 @@ services:
     container_name: market
     hostname: market
     image: "marketms"
-    build: .
+    build: Market_MS
     ports:
       - "8082:8082"
     environment:
