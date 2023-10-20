@@ -1,0 +1,85 @@
+name: Deploy SmartGym Backend
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  Setup:
+    runs-on: ubuntu-latest
+    outputs:
+      REGISTRY: ${{ steps.env.outputs.REGISTRY }}
+      PROJECT: ${{ steps.env.outputs.PROJECT }}
+      LABEL: ${{ steps.env.outputs.LABEL }}
+      IMAGE: ${{ steps.env.outputs.IMAGE }}
+      ENV: ${{ steps.env.outputs.ENV }}
+      OWNER_LOWER: ${{ steps.env.outputs.OWNER_LOWER }}
+
+    steps:
+      - name: Environment Setup
+        id: env
+        shell: bash
+        run: |
+          REPO=${GITHUB_REPOSITORY,,}
+
+          REGISTRY=ghcr.io
+          echo ::set-output name=REGISTRY::$REGISTRY
+
+          PROJECT=$(echo "$REPO" | cut -d/ -f 2 | cut -d- -f 1)
+          echo ::set-output name=PROJECT::$PROJECT
+
+          LABEL=$(echo "$REPO" | cut -d/ -f 2 | cut -d- -f -2)
+          echo ::set-output name=LABEL::$LABEL
+
+          ENV=production
+          echo ::set-output name=ENV::$ENV
+
+          OWNER_LOWER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo ::set-output name=OWNER_LOWER::$OWNER_LOWER
+
+  Build:
+    needs: [Setup]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ needs.Setup.outputs.REGISTRY }}/${{ needs.Setup.outputs.OWNER_LOWER }}/smartgym-backend
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ needs.Setup.outputs.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v3
+        with:
+          context: ./back
+          file: ./back/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Redeploy SmartGym Backend
+        uses: joelwmale/webhook-action@2.3.2
+        with:
+          url: "https://108.143.193.17:9443/api/webhooks/dce94828-1ba3-489c-8b5f-eec6f761b285"
+          headers: '{"repository": "${{ github.repository }}", "event": "deployment"}'
+          body: '{"event": "deployment", "repository": "${{ github.repository }}"}'
+          insecure: true
