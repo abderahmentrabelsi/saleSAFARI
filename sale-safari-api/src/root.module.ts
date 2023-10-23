@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule, MongooseModuleFactoryOptions } from '@nestjs/mongoose';
 import { TestModule } from './modules/test/test.module';
 import { KeycloakModule } from './common/keycloak/keycloak.module';
+import { EurekaModule } from 'nestjs-eureka';
 
 @Module({
   imports: [
@@ -10,6 +11,20 @@ import { KeycloakModule } from './common/keycloak/keycloak.module';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
+    }),
+    EurekaModule.forRoot({
+      eureka: {
+        host: 'localhost',
+        port: 8761,
+        registryFetchInterval: 1000,
+        servicePath: '/eureka/apps',
+        maxRetries: 3,
+      },
+      service: {
+        name: 'api',
+        port: 3000,
+        host: 'localhost',
+      },
     }),
     MongooseModule.forRootAsync({
       inject: [ConfigService],
