@@ -47,9 +47,27 @@ services:
     container_name: nodejs-app
     image: stripe-ms  # Use the image name you assigned when building the Node.js app
     ports:
-      - "3000:3000"
+      - "4000:4000"
     depends_on:
       Eureka:
         condition: service_started
 
 
+  candidats:
+    container_name: candidats
+    hostname: candidats
+    image: "dockerms"
+    build: .
+    ports:
+      - "9000:9000"
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
+      - spring.datasource.url=jdbc:mysql://root:@db-mysql:3306/markett?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+    depends_on:
+      Eureka:
+        condition: service_started
+      db-mysql:
+        condition: service_healthy

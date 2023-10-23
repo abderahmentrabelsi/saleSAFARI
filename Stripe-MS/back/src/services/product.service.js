@@ -131,7 +131,7 @@ const createCheckOutSession = async (req, res) => {
     }
 
     // Fetch the product data based on the provided product ID
-    const productResponse = await axios.get(`http://localhost:8082/products/${productId}`);
+    const productResponse = await axios.get(`http://market:8082/products/${productId}`);
     const product = productResponse.data;
 
     if (!product) {
