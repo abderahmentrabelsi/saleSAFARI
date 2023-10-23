@@ -28,6 +28,11 @@
   "include": [
     "src"
   ],
+  "paths": {
+    "@/common/*": [
+      "src/common/*"
+    ]
+  },
   "exclude": [
     "node_modules",
     "dist",

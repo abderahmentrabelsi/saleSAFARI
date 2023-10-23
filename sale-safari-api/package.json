@@ -33,6 +33,7 @@
     "@nestjs/swagger": "^7.1.14",
     "cookie-parser": "^1.4.6",
     "date-fns": "^2.30.0",
+    "mongoose": "^7.6.3",
     "mongoose-autopopulate": "^1.0.1",
     "nestjs-zod": "^3.0.0",
     "reflect-metadata": "^0.1.13",
