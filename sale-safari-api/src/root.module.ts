@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule, MongooseModuleFactoryOptions } from '@nestjs/mongoose';
+import { TestModule } from './modules/test/test.module';
+import { KeycloakModule } from './common/keycloak/keycloak.module';
 
 @Module({
   imports: [
+    KeycloakModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
@@ -19,6 +22,7 @@ import { MongooseModule, MongooseModuleFactoryOptions } from '@nestjs/mongoose';
         } as MongooseModuleFactoryOptions;
       },
     }),
+    TestModule,
   ],
   controllers: [],
   providers: [],

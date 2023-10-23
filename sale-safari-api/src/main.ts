@@ -24,9 +24,7 @@ function initSwagger(app: NestExpressApplication) {
     new ConsoleLogger('startup').log('Swagger enabled');
     const config = new DocumentBuilder()
       .setTitle('sale-safari-api')
-      .addServer('http://localhost:4747')
-      .addServer('https://staging-api.herocircle.app')
-      .addServer('https://api.herocircle.app')
+      .addServer('http://localhost:3000', 'Local server')
       .setDescription('The Hero Circle API description')
       .setVersion('1.0')
       .addBearerAuth({
