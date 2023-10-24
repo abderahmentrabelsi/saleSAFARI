@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Market_MS" />
         <module name="MsKhalil" />
+        <module name="apigateway" />
       </profile>
     </annotationProcessing>
   </component>
@@ -15,6 +16,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Market_MS" options="-parameters" />
       <module name="MsKhalil" options="-parameters" />
+      <module name="apigateway" options="-parameters" />
     </option>
   </component>
 </project>

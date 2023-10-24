@@ -55,6 +55,7 @@ public class ClaimServiceImpl implements IClaimService {
     public static String uploadDirectory = "C:\\Users\\USER\\Desktop\\images\\";
 
 
+
     public ResponseEntity<ByteArrayResource> createClaim(Claim c, MultipartFile file) throws IOException, WriterException {
 
         String filterdesc = DescriptionFilter.filterdesc(c.getDescription()) ;
@@ -106,8 +107,27 @@ public class ClaimServiceImpl implements IClaimService {
 
     }
 
+    @Override
+    public Claim createClaim(Claim claim) {
+        // Perform any additional logic or validation before saving the claim
+        if (claim == null) {
+            // Handle the case where the claim is null (for example, throw an exception)
+            throw new IllegalArgumentException("Claim object cannot be null");
+        }
 
+        // You can add more validation or business logic here...
 
+        // Set default values or perform any pre-processing before saving the claim
+        claim.setCreationDate(new Date()); // Set the creation date to the current date
+        claim.setTreated(false); // Set treated status to false initially
+
+        // Save the claim to the database
+        Claim savedClaim = claimRepository.save(claim);
+
+        // Additional processing, if needed...
+
+        return savedClaim;
+    }
 
     //Download File
     public ResponseEntity<Resource> downloadFiles(String filename) throws IOException {

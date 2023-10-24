@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.pidev.bns.entity.khalil.Claim;
 import tn.esprit.pidev.bns.repository.khalil.ClaimRepository;
 import tn.esprit.pidev.bns.serviceInterface.khalil.IClaimService;
+import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
 import java.util.Date;
@@ -27,6 +28,35 @@ public class ClaimRestController {
 
     @Autowired
     private ClaimRepository claimRepository;
+
+    //http://localhost:9000/bns/claim/create-claim
+    @PostMapping("/create-claim")
+    public ResponseEntity<Claim> createClaim(@RequestBody Claim claim) {
+        try {
+            // Perform any additional logic or validation before saving the claim
+            if (claim == null) {
+                // Handle the case where the claim is null (for example, throw an exception)
+                throw new IllegalArgumentException("Claim object cannot be null");
+            }
+
+            // You can add more validation or business logic here...
+
+            // Set default values or perform any pre-processing before saving the claim
+            claim.setCreationDate(new Date()); // Set the creation date to the current date
+            claim.setTreated(false); // Set treated status to false initially
+
+            // Save the claim to the database
+            Claim savedClaim = claimRepository.save(claim);
+
+            // Additional processing, if needed...
+
+            return new ResponseEntity<>(savedClaim, HttpStatus.CREATED);
+        } catch (Exception e) {
+            // Handle exceptions, log error, etc.
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
 
     //http://localhost:9000/bns/claim/addclaim

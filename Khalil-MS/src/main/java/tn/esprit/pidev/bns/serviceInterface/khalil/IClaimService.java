@@ -15,6 +15,8 @@ public interface IClaimService {
 
     public ResponseEntity<ByteArrayResource> createClaim(Claim claim, MultipartFile file) throws IOException, WriterException;
 
+    Claim createClaim(Claim claim);
+
     public List<Claim> getAllClaims();
 
     public Claim updateClaim(Integer idClaim, Claim claim);

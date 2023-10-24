@@ -39,24 +39,24 @@ public class OfferServiceImpl implements IOfferService {
 
     public Offer createOffer(Offer offer) throws EmailException {
 
-        HtmlEmail email = new HtmlEmail();
-
-        email.setHostName("smtp.gmail.com");
-        email.setSmtpPort(587);
-        email.setAuthentication("khalil.turki@esprit.tn", "apriliaSR50");
-        email.setStartTLSEnabled(true);
-        email.addTo("khalil.turki@esprit.tn");
-        email.setFrom("ss@sss.com");
-        System.out.println(offer.getBusinessEmail()) ;
-        email.setSubject("APPEL D'OFFRE");
-
-
-        Context context = new Context();
-        context.setVariable("offer", offer);
-        String html = templateEngine.process("email-template", context);
-        email.setHtmlMsg(html);
-
-        email.send();
+        //HtmlEmail email = new HtmlEmail();
+        //
+        //email.setHostName("smtp.gmail.com");
+        //email.setSmtpPort(587);
+        //email.setAuthentication("khalil.turki@esprit.tn", "");
+        //email.setStartTLSEnabled(true);
+        //email.addTo("khalil.turki@esprit.tn");
+        //email.setFrom("ss@sss.com");
+        //System.out.println(offer.getBusinessEmail()) ;
+        //email.setSubject("APPEL D'OFFRE");
+        //
+        //
+        //Context context = new Context();
+        //context.setVariable("offer", offer);
+        //String html = templateEngine.process("email-template", context);
+        //email.setHtmlMsg(html);
+        //
+        //email.send();
 
         return offerRepository.save(offer);
     }
