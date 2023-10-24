@@ -28,7 +28,7 @@ export type TicketContext = {
 /**
  * Context injected into every react-query hook wrappers
  *
- * @param queryOptions options from the useQuery wrapper
+ * @param _queryOptions
  */
 export function useTicketContext<
   TQueryFnData = unknown,

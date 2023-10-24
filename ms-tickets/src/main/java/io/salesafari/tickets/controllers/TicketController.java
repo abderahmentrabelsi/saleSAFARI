@@ -56,4 +56,10 @@ public class TicketController {
     public ResponseEntity<List<TicketReadDTO>> getTicketByUserId(@PathVariable String userId) {
         return new ResponseEntity<>(ticketService.getTicketByUserId(userId), HttpStatus.OK);
     }
+
+    @PutMapping("/{id}/status/{status}")
+    @ApiOperation(value = "Update a ticket status")
+    public ResponseEntity<TicketReadDTO> updateTicketStatus(@PathVariable Integer id, @PathVariable String status) {
+        return new ResponseEntity<>(ticketService.updateTicketStatus(id, status), HttpStatus.OK);
+    }
 }

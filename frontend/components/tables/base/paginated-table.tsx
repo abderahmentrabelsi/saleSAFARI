@@ -13,7 +13,7 @@ import {
   Card
 } from '@nextui-org/react';
 import { snakeCaseToHumanReadable } from '@utils/string-utils';
-import { IdentifiableSchema, PaginatedQuery } from '@/api/apiCustomSchemas';
+import { IdentifiableSchema, PaginatedQuery } from '@/api/ticketCustomSchemas';
 import { CardBody } from '@nextui-org/card';
 
 export interface RenderTableCellProps<

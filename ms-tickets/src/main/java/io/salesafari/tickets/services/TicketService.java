@@ -53,4 +53,11 @@ public class TicketService {
                 .map(ticket -> modelMapper.map(ticket, TicketReadDTO.class))
                 .collect(Collectors.toList());
     }
+
+    public TicketReadDTO updateTicketStatus(Integer id, String status) {
+        Ticket ticket = ticketRepository.findById(id).orElseThrow(() -> new RuntimeException("Ticket not found"));
+        ticket.setStatus(status);
+        ticket = ticketRepository.save(ticket);
+        return modelMapper.map(ticket, TicketReadDTO.class);
+    }
 }

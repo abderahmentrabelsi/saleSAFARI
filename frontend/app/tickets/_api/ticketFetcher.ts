@@ -1,6 +1,7 @@
 import { TicketContext } from './ticketContext';
+import * as process from 'process';
 
-const baseUrl = 'http://localhost:8089';
+const baseUrl = process.env.NEXT_PUBLIC_TICKETS_API_URL!;
 
 export type ErrorWrapper<TError> =
   | TError

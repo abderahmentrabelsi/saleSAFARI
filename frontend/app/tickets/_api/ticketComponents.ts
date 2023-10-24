@@ -158,6 +158,60 @@ export const useDeleteTicket = (
   });
 };
 
+export type UpdateTicketStatusPathParams = {
+  /**
+   * @format int32
+   */
+  id: number;
+  status: string;
+};
+
+export type UpdateTicketStatusError = Fetcher.ErrorWrapper<undefined>;
+
+export type UpdateTicketStatusVariables = {
+  pathParams: UpdateTicketStatusPathParams;
+} & TicketContext['fetcherOptions'];
+
+export const fetchUpdateTicketStatus = (
+  variables: UpdateTicketStatusVariables,
+  signal?: AbortSignal
+) =>
+  ticketFetch<
+    Schemas.TicketReadDTO,
+    UpdateTicketStatusError,
+    undefined,
+    {},
+    {},
+    UpdateTicketStatusPathParams
+  >({
+    url: '/tickets/{id}/status/{status}',
+    method: 'put',
+    ...variables,
+    signal
+  });
+
+export const useUpdateTicketStatus = (
+  options?: Omit<
+    reactQuery.UseMutationOptions<
+      Schemas.TicketReadDTO,
+      UpdateTicketStatusError,
+      UpdateTicketStatusVariables
+    >,
+    'mutationFn'
+  >
+) => {
+  const { fetcherOptions } = useTicketContext();
+  return reactQuery.useMutation<
+    Schemas.TicketReadDTO,
+    UpdateTicketStatusError,
+    UpdateTicketStatusVariables
+  >({
+    mutationFn: (variables: UpdateTicketStatusVariables) =>
+      fetchUpdateTicketStatus({ ...fetcherOptions, ...variables }),
+    ...options
+  });
+};
+
 export type GetCommentByIdPathParams = {
   /**
    * @format int32
