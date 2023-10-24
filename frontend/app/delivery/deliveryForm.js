@@ -1,5 +1,8 @@
 "use client"
 import React, { useState } from 'react';
+import { TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
+import { useSession } from 'next-auth/react';
+import axios from 'axios';
 
 const DeliveryForm = () => {
   const [recipientName, setRecipientName] = useState('');
@@ -7,11 +10,11 @@ const DeliveryForm = () => {
   const [deliveryCost, setDeliveryCost] = useState(0);
   const [isDelivered, setIsDelivered] = useState(false);
   const [deliveryMan, setDeliveryMan] = useState('');
+  const { data } = useSession();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Handle form submission here
     const formData = {
       recipientName,
       deliveryAddress,
@@ -20,57 +23,75 @@ const DeliveryForm = () => {
       deliveryMan,
     };
 
-    console.log(formData); // Replace with your API call or data handling logic
+    try {
+      const apiUrl = 'http://localhost:8081/DELIVERYMS/deliveries';
+
+      const headers = {
+        'Authorization': `Bearer ${data.access_token}`,
+        'Content-Type': 'application/json',
+      };
+      const response = await axios.post(apiUrl, formData, { headers });
+
+      console.log('Delivery submitted successfully:', response.data);
+    } catch (error) {
+      console.error('Error submitting delivery:', error);
+    }
+  };
+
+  const formStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Recipient Name</label>
-        <input
-          type="text"
+    <form onSubmit={handleSubmit} style={formStyle}>
+      <div style={{ marginBottom: '16px' }}>
+        <TextField
+          label="Recipient Name"
+          variant="outlined"
+          fullWidth
           value={recipientName}
           onChange={(e) => setRecipientName(e.target.value)}
         />
       </div>
-
-      <div>
-        <label>Delivery Address</label>
-        <input
-          type="text"
+      <div style={{ marginBottom: '16px' }}>
+        <TextField
+          label="Delivery Address"
+          variant="outlined"
+          fullWidth
           value={deliveryAddress}
           onChange={(e) => setDeliveryAddress(e.target.value)}
         />
       </div>
-
-      <div>
-        <label>Delivery Cost</label>
-        <input
+      <div style={{ marginBottom: '16px' }}>
+        <TextField
+          label="Delivery Cost"
+          variant="outlined"
           type="number"
+          fullWidth
           value={deliveryCost}
           onChange={(e) => setDeliveryCost(parseFloat(e.target.value))}
         />
       </div>
-
-      <div>
-        <label>Is Delivered</label>
-        <input
-          type="checkbox"
-          checked={isDelivered}
-          onChange={(e) => setIsDelivered(e.target.checked)}
+      <div style={{ marginBottom: '16px' }}>
+        <FormControlLabel
+          control={<Checkbox checked={isDelivered} onChange={(e) => setIsDelivered(e.target.checked)} />}
+          label="Is Delivered"
         />
       </div>
-
-      <div>
-        <label>Delivery Man (ID)</label>
-        <input
-          type="text"
+      <div style={{ marginBottom: '16px' }}>
+        <TextField
+          label="Delivery Man (ID)"
+          variant="outlined"
+          fullWidth
           value={deliveryMan}
           onChange={(e) => setDeliveryMan(e.target.value)}
         />
       </div>
-
-      <button type="submit">Submit</button>
+      <Button color="primary" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };

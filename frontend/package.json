@@ -11,12 +11,17 @@
     "gen-client": "npx openapi-codegen gen dark"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.15",
+    "@mui/material": "^5.14.15",
     "@nextui-org/react": "^2.1.13",
     "@radix-ui/react-dialog": "^1.0.5",
     "@react-aria/ssr": "^3.6.0",
     "@react-aria/visually-hidden": "^3.8.1",
     "@tanstack/react-query": "^4.35.3",
     "autoprefixer": "10.4.14",
+    "axios": "^1.5.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^1.2.1",
     "date-fns": "^2.30.0",

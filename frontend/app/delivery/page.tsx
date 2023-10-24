@@ -2,11 +2,22 @@ import React from 'react';
 import DeliveryForm from './deliveryForm';
 
 
-export default function delivery() {
+const DeliveryPage = () => {
+  const titleStyle = {
+    textAlign: 'center', // Center-align the title
+    fontSize: '36px',   // Increase the font size
+    marginBottom: '24px', // Add margin at the bottom
+  };
+
   return (
     <div>
-      <h1>Delivery</h1>
-      <DeliveryForm />
+        <h1 style={titleStyle}>Delivery</h1>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <DeliveryForm /> {/* Center-align the form */}
+      </div>
     </div>
   );
-}
+};
+
+export default DeliveryPage;
+
