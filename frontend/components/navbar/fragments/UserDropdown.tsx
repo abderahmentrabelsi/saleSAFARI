@@ -17,7 +17,7 @@ import { signOut, useSession } from 'next-auth/react';
 export const UserDropdown = () => {
   const { data: session, status } = useSession();
 
-  console.table({ session, status });
+  console.table(session);
   if (status !== 'authenticated') return null;
 
   return (

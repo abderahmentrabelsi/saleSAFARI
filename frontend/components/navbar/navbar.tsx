@@ -20,7 +20,6 @@ import { UserDropdown } from '@components/navbar/fragments/UserDropdown';
 
 export const Navbar = () => {
   const { data: session, status } = useSession();
-
   // todo: use https://www.npmjs.com/package/react-responsive to make this responsive
   return (
     <NextUINavbar maxWidth="xl" position="sticky">

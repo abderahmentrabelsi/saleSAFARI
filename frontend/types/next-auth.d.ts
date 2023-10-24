@@ -11,7 +11,8 @@ interface AuthUser {
 declare module 'next-auth' {
   interface Session {
     user: AuthUser & DefaultSession['user'];
-    accessToken: string; // THE FUCK ?
+    access_token: string; // THE FUCK ?
+    user_id: string;
   }
 }
 
