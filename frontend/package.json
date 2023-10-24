@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gen-client": "npx openapi-codegen gen dark"
+    "gen-tickets-client": "npx openapi-codegen gen tickets"
   },
   "dependencies": {
     "@nextui-org/code": "^2.0.19",
