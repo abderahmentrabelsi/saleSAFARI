@@ -17,6 +17,7 @@ import React from 'react';
 import { StaticNavbar } from '@/components/navbar/staticNavbarFragment';
 import { useSession } from 'next-auth/react';
 import { UserDropdown } from '@components/navbar/fragments/UserDropdown';
+import { Cart } from '@/app/cart';
 
 export const Navbar = () => {
   const { data: session, status } = useSession();
@@ -29,6 +30,7 @@ export const Navbar = () => {
             <Logo />
             <p className="font-bold text-inherit">SaleSafari</p>
           </NextLink>
+          <Cart />
         </NavbarBrand>
         <StaticNavbar />
       </NavbarContent>
