@@ -19,6 +19,8 @@ import { useSession } from 'next-auth/react';
 import { UserDropdown } from '@components/navbar/fragments/UserDropdown';
 
 export const Navbar = () => {
+  const { data: session, status } = useSession();
+
   // todo: use https://www.npmjs.com/package/react-responsive to make this responsive
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
@@ -38,7 +40,7 @@ export const Navbar = () => {
       >
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
-          {/*{status === 'authenticated' && session && <UserDropdown />}*/}
+          {status === 'authenticated' && session && <UserDropdown />}
         </NavbarItem>
       </NavbarContent>
     </NextUINavbar>

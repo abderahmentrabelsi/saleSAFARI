@@ -17,6 +17,7 @@ import { signOut, useSession } from 'next-auth/react';
 export const UserDropdown = () => {
   const { data: session, status } = useSession();
 
+  console.table({ session, status });
   if (status !== 'authenticated') return null;
 
   return (
@@ -28,7 +29,7 @@ export const UserDropdown = () => {
           radius="sm"
           variant="light"
         >
-          {session.user.username}
+          {session.user.name}
         </Button>
       </DropdownTrigger>
 
@@ -37,17 +38,8 @@ export const UserDropdown = () => {
           <Link
             color="foreground"
             className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-            href="/account"
-          >
-            Account Settings
-          </Link>
-        </DropdownItem>
-        <DropdownItem>
-          <Link
-            color="foreground"
-            className="p-0 bg-transparent data-[hover=true]:bg-transparent"
             onClick={async () => {
-              await signOut({ callbackUrl: '/auth' });
+              await signOut({ callbackUrl: '/' });
             }}
           >
             Logout
