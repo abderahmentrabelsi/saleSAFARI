@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule, MongooseModuleFactoryOptions } from '@nestjs/mongoose';
 import { TestModule } from './modules/test/test.module';
-import { KeycloakModule } from './common/keycloak/keycloak.module';
+// import { KeycloakModule } from './common/keycloak/keycloak.module';  <-- commented because moved to the gateway
 import { EurekaModule } from 'nestjs-eureka';
 
 @Module({
   imports: [
-    KeycloakModule,
+    // KeycloakModule, <-- commented because moved to the gateway
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
