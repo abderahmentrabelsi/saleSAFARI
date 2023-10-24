@@ -3,10 +3,7 @@ package com.example.delivery_ms.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,6 +14,7 @@ import java.util.List;
 @Entity
 @Builder
 @ToString
+@Table(name = "courier")
 public class Courier  implements Serializable {
 
     @Id

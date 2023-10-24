@@ -21,6 +21,7 @@ import java.io.Serializable;
 @Entity
 @Builder
 @ToString
+@Table(name = "delivery")
 public class Delivery implements Serializable {
 
     @Id

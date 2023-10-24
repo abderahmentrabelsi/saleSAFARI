@@ -5,9 +5,33 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@nextui-org/code':
+    specifier: ^2.0.19
+    version: 2.0.19(react@18.2.0)(tailwindcss@3.3.2)
+  '@nextui-org/link':
+    specifier: ^2.0.22
+    version: 2.0.22(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
+  '@nextui-org/navbar':
+    specifier: ^2.0.22
+    version: 2.0.22(@types/react@18.2.8)(framer-motion@10.12.16)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
   '@nextui-org/react':
     specifier: ^2.1.13
     version: 2.1.13(@types/react@18.2.8)(framer-motion@10.12.16)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
+  '@nextui-org/shared-icons':
+    specifier: ^2.0.4
+    version: 2.0.4(react@18.2.0)
+  '@nextui-org/snippet':
+    specifier: ^2.0.25
+    version: 2.0.25(framer-motion@10.12.16)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
+  '@nextui-org/switch':
+    specifier: ^2.0.21
+    version: 2.0.21(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
+  '@nextui-org/system':
+    specifier: ^2.0.10
+    version: 2.0.10(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)
+  '@nextui-org/theme':
+    specifier: ^2.1.9
+    version: 2.1.9(tailwindcss@3.3.2)
   '@radix-ui/react-dialog':
     specifier: ^1.0.5
     version: 1.0.5(@types/react@18.2.8)(react-dom@18.2.0)(react@18.2.0)
