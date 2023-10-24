@@ -1,6 +1,6 @@
-import {BadRequestException, NotFoundException} from '@nestjs/common';
-import {ObjectId as BsonObjectId} from 'bson';
-import {UpdateResult} from 'mongodb';
+import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { ObjectId as BsonObjectId } from 'bson';
+import { UpdateResult } from 'mongodb';
 import {
   Document,
   FilterQuery,
@@ -78,13 +78,16 @@ export class IServiceBase<T extends Document> {
     }
   }
 
-  async create(data: Partial<T>, populate?: string | PopulateOptions | (string | PopulateOptions)[]): Promise<T> {
+  async create(
+    data: Partial<T>,
+    populate?: string | PopulateOptions | (string | PopulateOptions)[],
+  ): Promise<T> {
     try {
       const create = await this.model.create(data);
       const result = await create.save();
-      if(populate) {
+      if (populate) {
         const a = await result.populate(populate);
-        return a.toObject<T>()
+        return a.toObject<T>();
       }
       return result.toObject<T>();
     } catch (error) {
