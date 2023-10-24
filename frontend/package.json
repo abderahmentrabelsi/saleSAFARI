@@ -11,7 +11,15 @@
     "gen-client": "npx openapi-codegen gen dark"
   },
   "dependencies": {
+    "@nextui-org/code": "^2.0.19",
+    "@nextui-org/link": "^2.0.22",
+    "@nextui-org/navbar": "^2.0.22",
     "@nextui-org/react": "^2.1.13",
+    "@nextui-org/shared-icons": "^2.0.4",
+    "@nextui-org/snippet": "^2.0.25",
+    "@nextui-org/switch": "^2.0.21",
+    "@nextui-org/system": "^2.0.10",
+    "@nextui-org/theme": "^2.1.9",
     "@radix-ui/react-dialog": "^1.0.5",
     "@react-aria/ssr": "^3.6.0",
     "@react-aria/visually-hidden": "^3.8.1",
