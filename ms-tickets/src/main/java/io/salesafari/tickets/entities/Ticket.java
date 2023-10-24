@@ -20,7 +20,7 @@ public class Ticket extends AbstractPersistable<Integer> {
     private String status;
 
     @Column
-    private String user_id;
+    private String userId;
 
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL)
     private java.util.List<Comment> comments;

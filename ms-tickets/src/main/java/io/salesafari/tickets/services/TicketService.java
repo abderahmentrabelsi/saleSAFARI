@@ -47,4 +47,10 @@ public class TicketService {
     public void deleteTicket(Integer id) {
         ticketRepository.deleteById(id);
     }
+
+    public List<TicketReadDTO> getTicketByUserId(String userId) {
+        return ticketRepository.findByUserId(userId).stream()
+                .map(ticket -> modelMapper.map(ticket, TicketReadDTO.class))
+                .collect(Collectors.toList());
+    }
 }

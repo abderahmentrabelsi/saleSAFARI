@@ -50,4 +50,10 @@ public class TicketController {
         ticketService.deleteTicket(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/user/{userId}")
+    @ApiOperation(value = "Get a ticket by its user id")
+    public ResponseEntity<List<TicketReadDTO>> getTicketByUserId(@PathVariable String userId) {
+        return new ResponseEntity<>(ticketService.getTicketByUserId(userId), HttpStatus.OK);
+    }
 }
