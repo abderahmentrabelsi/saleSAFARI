@@ -1,0 +1,3 @@
+2023-10-24 17:58:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COURIER" not found (this database is empty); SQL statement:
+select courier0_.cin as cin1_0_0_, courier0_.first_name as first_na2_0_0_, courier0_.is_available as is_avail3_0_0_, courier0_.last_name as last_nam4_0_0_, courier0_.phone_number as phone_nu5_0_0_ from courier courier0_ where courier0_.cin=? [42104-214]
