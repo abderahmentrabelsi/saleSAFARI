@@ -22,7 +22,7 @@ import { EurekaModule } from 'nestjs-eureka';
       },
       service: {
         name: 'api',
-        port: 3000,
+        port: 4747,
         host: 'localhost',
       },
     }),

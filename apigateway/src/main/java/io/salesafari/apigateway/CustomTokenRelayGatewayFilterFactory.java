@@ -4,11 +4,10 @@ import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.web.server.ServerWebExchange;
 
 @Component
 @Order(1)
-public class TokenRelayGatewayFilterFactory extends AbstractGatewayFilterFactory<Object> {
+public class CustomTokenRelayGatewayFilterFactory extends AbstractGatewayFilterFactory<Object> {
 
     @Override
     public GatewayFilter apply(Object config) {

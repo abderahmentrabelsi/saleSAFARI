@@ -15,7 +15,7 @@ async function bootstrap() {
   });
   app.use(cookieParser());
 
-  await app.listen(3000);
+  await app.listen(4747);
 }
 
 function initSwagger(app: NestExpressApplication) {
@@ -24,8 +24,8 @@ function initSwagger(app: NestExpressApplication) {
     new ConsoleLogger('startup').log('Swagger enabled');
     const config = new DocumentBuilder()
       .setTitle('sale-safari-api')
-      .addServer('http://localhost:3000', 'Local server')
-      .setDescription('The Hero Circle API description')
+      .addServer('http://localhost:4747', 'Local server')
+      .setDescription('SaleSafari description')
       .setVersion('1.0')
       .addBearerAuth({
         name: 'Authorization',
