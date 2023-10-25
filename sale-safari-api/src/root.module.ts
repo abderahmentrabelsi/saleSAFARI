@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule, MongooseModuleFactoryOptions } from '@nestjs/mongoose';
-// import { KeycloakModule } from './common/keycloak/keycloak.module';  <-- commented because moved to the gateway
 import { EurekaModule } from 'nestjs-eureka';
 import { OpenAIModule } from '@platohq/nestjs-openai';
+import { AutomatedResponseModule } from './modules/openai/automated-response-module';
 
 @Module({
   imports: [
@@ -40,7 +40,7 @@ import { OpenAIModule } from '@platohq/nestjs-openai';
         } as MongooseModuleFactoryOptions;
       },
     }),
-    OpenAIModule,
+    AutomatedResponseModule,
   ],
   controllers: [],
   providers: [],

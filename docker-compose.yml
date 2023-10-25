@@ -98,7 +98,6 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - REACT_APP_API_URL=http://sale-safari-api:4747
       - KEYCLOAK_URL=https://keycloak.mkadmi.tech/auth
       - KEYCLOAK_REALM=master
       - KEYCLOAK_CLIENT_ID=nest-api
