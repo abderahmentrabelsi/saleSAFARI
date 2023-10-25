@@ -40,7 +40,7 @@ const CreateProductModal: React.FC<CreateProductModalProps> = ({
 
         // Create a new product
         const newProduct: Product = {
-            id: Date.now(), // Generate a unique ID (replace with actual ID)
+            // Generate a unique ID (replace with actual ID)
             ...productData,
         };
 
@@ -49,6 +49,7 @@ const CreateProductModal: React.FC<CreateProductModalProps> = ({
         onClose();
     }
 
+    // @ts-ignore
     return (
         <Modal size="lg" isOpen={isOpen} onClose={onClose}>
             <ModalContent>
@@ -72,14 +73,15 @@ const CreateProductModal: React.FC<CreateProductModalProps> = ({
                         isRequired
                         label="Price"
                         type="number"
-                        value={productData.price}
+                        value={productData.price.toString()} // Convert to string
                         onChange={(e) => setProductData({ ...productData, price: parseFloat(e.target.value) })}
                     />
+
                     <Input
                         isRequired
                         label="Rating"
                         type="number"
-                        value={productData.rating}
+                        value={productData.rating.toString()} // Convert to string
                         onChange={(e) => setProductData({ ...productData, rating: parseFloat(e.target.value) })}
                     />
                     <Input
@@ -93,7 +95,7 @@ const CreateProductModal: React.FC<CreateProductModalProps> = ({
                         isRequired
                         label="Quantity"
                         type="number"
-                        value={productData.qty}
+                        value={productData.qty.toString()} // Convert to string
                         onChange={(e) => setProductData({ ...productData, qty: parseInt(e.target.value) })}
                     />
                     <Input

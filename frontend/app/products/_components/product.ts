@@ -1,5 +1,4 @@
 export interface Product {
-    id: number;
     name: string;
     description: string;
     price: number;
@@ -9,5 +8,5 @@ export interface Product {
     slug: string;
     brand: string;
     inWishlist: boolean;
-
+    inCart: boolean;
 }
