@@ -25,7 +25,8 @@ const areas = [
     uri: '/customer',
     children: [
       { label: 'Home', path: '/' },
-      { label: 'Orders', path: '/orders', absolute: true }
+      { label: 'Orders', path: '/orders', absolute: true },
+      { label: 'Your Deliveries', path: '/showDeliveries', absolute: true }
     ]
   }
 ];

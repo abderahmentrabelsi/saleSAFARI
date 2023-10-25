@@ -8,14 +8,21 @@ import com.example.market_ms.repository.ProductRepository;
 import com.example.market_ms.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+//import wishlistdto
+import com.example.market_ms.dto.WishlistDto;
+//Import modelmapper
+import org.modelmapper.ModelMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WishlistService extends AbstractCrudService<Wishlist> {
 
     @Autowired
     private WishlistRepository wishlistRepository;
+    @Autowired
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
     private ProductRepository productRepository; // Assuming you have a ProductRepository
@@ -46,4 +53,13 @@ public class WishlistService extends AbstractCrudService<Wishlist> {
             }
         }
     }
+
+    public List<WishlistDto> getAllWishlists() {
+        List<Wishlist> wishlists = wishlistRepository.findAll();
+        return wishlists.stream()
+                .map(wishlist -> modelMapper.map(wishlist, WishlistDto.class))
+                .collect(Collectors.toList());
+    }
+
+
 }

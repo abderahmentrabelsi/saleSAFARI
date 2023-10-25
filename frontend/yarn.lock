@@ -411,14 +411,7 @@
   "resolved" "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.14.15.tgz"
   "version" "5.14.15"
 
-"@mui/icons-material@^5.14.15":
-  "integrity" "sha512-Dqu21vN/mVNzebJ+ofnKG+CeJYIhHuDs5+0fMEpdpzRt6UojelzdrEkNv+XkO0e1JMclzeXIRx404FirK/CFRw=="
-  "resolved" "https://registry.npmjs.org/@mui/icons-material/-/icons-material-5.14.15.tgz"
-  "version" "5.14.15"
-  dependencies:
-    "@babel/runtime" "^7.23.2"
-
-"@mui/material@^5.0.0", "@mui/material@^5.14.15":
+"@mui/material@^5.14.15":
   "integrity" "sha512-Gq65rHjvLzkxmhG8bvag851Oqsmru7qkUb/cCI2xu7dQzmY345f9xJRJi72sRGjhaqHXWeRKw/yIwp/7oQoeXg=="
   "resolved" "https://registry.npmjs.org/@mui/material/-/material-5.14.15.tgz"
   "version" "5.14.15"
@@ -484,10 +477,10 @@
     "prop-types" "^15.8.1"
     "react-is" "^18.2.0"
 
-"@next/env@13.5.2":
-  "integrity" "sha512-dUseBIQVax+XtdJPzhwww4GetTjlkRSsXeQnisIJWBaHsnxYcN2RGzsPHi58D6qnkATjnhuAtQTJmR1hKYQQPg=="
-  "resolved" "https://registry.npmjs.org/@next/env/-/env-13.5.2.tgz"
-  "version" "13.5.2"
+"@next/env@13.5.6":
+  "integrity" "sha512-Yac/bV5sBGkkEXmAX5FWPS9Mmo2rthrOPRQQNfycJPkjUAUclomCPH7QFVCDQ4Mp2k2K1SSM6m0zrxYrOwtFQw=="
+  "resolved" "https://registry.npmjs.org/@next/env/-/env-13.5.6.tgz"
+  "version" "13.5.6"
 
 "@next/eslint-plugin-next@13.5.2":
   "integrity" "sha512-Ew8DOUerJYGRo8pI84SVwn9wxxx8sH92AanCXSkkLJM2W0RJEWy+BqWSCfrlA/3ZIczEl4l4o4lOeTGBPYfBJg=="
@@ -496,10 +489,10 @@
   dependencies:
     "glob" "7.1.7"
 
-"@next/swc-win32-x64-msvc@13.5.2":
-  "integrity" "sha512-LfTHt+hTL8w7F9hnB3H4nRasCzLD/fP+h4/GUVBTxrkMJOnh/7OZ0XbYDKO/uuWwryJS9kZjhxcruBiYwc5UDw=="
-  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.5.2.tgz"
-  "version" "13.5.2"
+"@next/swc-win32-x64-msvc@13.5.6":
+  "integrity" "sha512-Cqfe1YmOS7k+5mGu92nl5ULkzpKuxJrP3+4AEuPmrpFZ3BHxTY3TnHmU1On3bFmFFs6FbTcdF58CCUProGpIGQ=="
+  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.5.6.tgz"
+  "version" "13.5.6"
 
 "@nextui-org/accordion@2.0.23":
   "integrity" "sha512-P8TEo79eSMh56VudWF0SvAV8ISC5Qwlx4v03SP3w+Chubl9nrbFbEWyAizOc7KR3ge+VOaS88wyjiZ5BzpG1XQ=="
@@ -628,7 +621,7 @@
     "@react-aria/utils" "^3.20.0"
     "@react-types/checkbox" "^3.5.1"
 
-"@nextui-org/code@^2.0.19", "@nextui-org/code@2.0.19":
+"@nextui-org/code@2.0.19":
   "integrity" "sha512-t3/tZf3uZu3lA4ah+BIogToUsX9BRYe+vyQMzPAY3D54QtdNz/HuB5pxZimpRPlOaxUeDGXzrfWwm3pB7E6iqQ=="
   "resolved" "https://registry.npmjs.org/@nextui-org/code/-/code-2.0.19.tgz"
   "version" "2.0.19"
@@ -715,7 +708,7 @@
     "@nextui-org/theme" "2.1.9"
     "@react-aria/utils" "^3.20.0"
 
-"@nextui-org/link@^2.0.22", "@nextui-org/link@2.0.22":
+"@nextui-org/link@2.0.22":
   "integrity" "sha512-m6M3/tNinrsiIw6elj5JzY6lzK4pWquLVqjRrhDR3kNGRP48ymgKsN64T/pUgKTTlm70hS3ew3xhRs+s4budMw=="
   "resolved" "https://registry.npmjs.org/@nextui-org/link/-/link-2.0.22.tgz"
   "version" "2.0.22"
@@ -795,7 +788,7 @@
     "@react-types/overlays" "^3.8.2"
     "react-remove-scroll" "^2.5.6"
 
-"@nextui-org/navbar@^2.0.22", "@nextui-org/navbar@2.0.22":
+"@nextui-org/navbar@2.0.22":
   "integrity" "sha512-s6XJUcx7p+8tUBVPK5QPqk8jjrnUt083r8hoa0SA5WWe4TY4QiEFWX2maaDFINo00/6mZmMlql0QJh1OrhdsDA=="
   "resolved" "https://registry.npmjs.org/@nextui-org/navbar/-/navbar-2.0.22.tgz"
   "version" "2.0.22"
@@ -987,7 +980,7 @@
     "@react-aria/visually-hidden" "^3.8.4"
     "@react-types/shared" "^3.20.0"
 
-"@nextui-org/shared-icons@^2.0.4", "@nextui-org/shared-icons@2.0.4":
+"@nextui-org/shared-icons@2.0.4":
   "integrity" "sha512-I0gzreq1E3ji+OSTtsOYBnbdLboHoCAzPa+r//Qkf16I2gq6xxjjkfeNXFdFJjouRnPCLtR5eihlxt/ozWK8oA=="
   "resolved" "https://registry.npmjs.org/@nextui-org/shared-icons/-/shared-icons-2.0.4.tgz"
   "version" "2.0.4"
@@ -1007,7 +1000,7 @@
     "@nextui-org/system-rsc" "2.0.6"
     "@nextui-org/theme" "2.1.9"
 
-"@nextui-org/snippet@^2.0.25", "@nextui-org/snippet@2.0.25":
+"@nextui-org/snippet@2.0.25":
   "integrity" "sha512-9zQnoFgaogdQkZN2IkmPHDUG3jM0egpT64eUsQpn8aC44SjhboTqS8jix8f+NTJ/WF9A8upLkiVOJUoPtLaCjQ=="
   "resolved" "https://registry.npmjs.org/@nextui-org/snippet/-/snippet-2.0.25.tgz"
   "version" "2.0.25"
@@ -1043,7 +1036,7 @@
     "@nextui-org/system-rsc" "2.0.6"
     "@nextui-org/theme" "2.1.9"
 
-"@nextui-org/switch@^2.0.21", "@nextui-org/switch@2.0.21":
+"@nextui-org/switch@2.0.21":
   "integrity" "sha512-FrbSUcHY7RtJHtB5Ddsso2MDo58HgmwWbyHTi1E/zVTawONosBmkdV/v3Y2rKAFcqSz1VK973hrtYztYWUzkTA=="
   "resolved" "https://registry.npmjs.org/@nextui-org/switch/-/switch-2.0.21.tgz"
   "version" "2.0.21"
@@ -1068,7 +1061,7 @@
     "clsx" "^1.2.1"
     "tailwind-variants" "^0.1.14"
 
-"@nextui-org/system@^2.0.10", "@nextui-org/system@2.0.10":
+"@nextui-org/system@2.0.10":
   "integrity" "sha512-5F6739zMOYSYR5CM/N8FQsRlQn8yCKiU5VNNPFkk022P5cA2NZXrhZ08mQSmFw2BU7OWxa/ieLivjDptKcRozQ=="
   "resolved" "https://registry.npmjs.org/@nextui-org/system/-/system-2.0.10.tgz"
   "version" "2.0.10"
@@ -1121,7 +1114,7 @@
     "@react-types/tabs" "^3.3.2"
     "scroll-into-view-if-needed" "3.0.10"
 
-"@nextui-org/theme@^2.1.9", "@nextui-org/theme@2.1.9":
+"@nextui-org/theme@2.1.9":
   "integrity" "sha512-DmSv6yWb8zp3dQ4ic5XDWGc1rNjEOPphrfc5E4tzUZqgsLisNjr2Gm3bMzM51Kquepv8OzYojoaB2nO2zmI6mw=="
   "resolved" "https://registry.npmjs.org/@nextui-org/theme/-/theme-2.1.9.tgz"
   "version" "2.1.9"
@@ -4633,7 +4626,7 @@
     "object-assign" "^4.0.1"
     "thenify-all" "^1.0.0"
 
-"nanoid@^3.3.4", "nanoid@^3.3.6":
+"nanoid@^3.3.6":
   "integrity" "sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA=="
   "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.3.6.tgz"
   "version" "3.3.6"
@@ -4664,28 +4657,27 @@
   "version" "0.2.1"
 
 "next@*", "next@^12.2.5 || ^13", "next@^13.5.2":
-  "integrity" "sha512-vog4UhUaMYAzeqfiAAmgB/QWLW7p01/sg+2vn6bqc/CxHFYizMzLv6gjxKzl31EVFkfl/F+GbxlKizlkTE9RdA=="
-  "resolved" "https://registry.npmjs.org/next/-/next-13.5.2.tgz"
-  "version" "13.5.2"
+  "integrity" "sha512-Y2wTcTbO4WwEsVb4A8VSnOsG1I9ok+h74q0ZdxkwM3EODqrs4pasq7O0iUxbcS9VtWMicG7f3+HAj0r1+NtKSw=="
+  "resolved" "https://registry.npmjs.org/next/-/next-13.5.6.tgz"
+  "version" "13.5.6"
   dependencies:
-    "@next/env" "13.5.2"
+    "@next/env" "13.5.6"
     "@swc/helpers" "0.5.2"
     "busboy" "1.6.0"
     "caniuse-lite" "^1.0.30001406"
-    "postcss" "8.4.14"
+    "postcss" "8.4.31"
     "styled-jsx" "5.1.1"
     "watchpack" "2.4.0"
-    "zod" "3.21.4"
   optionalDependencies:
-    "@next/swc-darwin-arm64" "13.5.2"
-    "@next/swc-darwin-x64" "13.5.2"
-    "@next/swc-linux-arm64-gnu" "13.5.2"
-    "@next/swc-linux-arm64-musl" "13.5.2"
-    "@next/swc-linux-x64-gnu" "13.5.2"
-    "@next/swc-linux-x64-musl" "13.5.2"
-    "@next/swc-win32-arm64-msvc" "13.5.2"
-    "@next/swc-win32-ia32-msvc" "13.5.2"
-    "@next/swc-win32-x64-msvc" "13.5.2"
+    "@next/swc-darwin-arm64" "13.5.6"
+    "@next/swc-darwin-x64" "13.5.6"
+    "@next/swc-linux-arm64-gnu" "13.5.6"
+    "@next/swc-linux-arm64-musl" "13.5.6"
+    "@next/swc-linux-x64-gnu" "13.5.6"
+    "@next/swc-linux-x64-musl" "13.5.6"
+    "@next/swc-win32-arm64-msvc" "13.5.6"
+    "@next/swc-win32-ia32-msvc" "13.5.6"
+    "@next/swc-win32-x64-msvc" "13.5.6"
 
 "node-fetch-h2@^2.3.0":
   "integrity" "sha512-ofRW94Ab0T4AOh5Fk8t0h8OBWrmjb0SSB20xh1H8YnPV9EJ+f5AMoYSUQ2zgJ4Iq2HAK0I2l5/Nequ8YzFS3Hg=="
@@ -5113,12 +5105,12 @@
     "picocolors" "^1.0.0"
     "source-map-js" "^1.0.2"
 
-"postcss@8.4.14":
-  "integrity" "sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig=="
-  "resolved" "https://registry.npmjs.org/postcss/-/postcss-8.4.14.tgz"
-  "version" "8.4.14"
+"postcss@8.4.31":
+  "integrity" "sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ=="
+  "resolved" "https://registry.npmjs.org/postcss/-/postcss-8.4.31.tgz"
+  "version" "8.4.31"
   dependencies:
-    "nanoid" "^3.3.4"
+    "nanoid" "^3.3.6"
     "picocolors" "^1.0.0"
     "source-map-js" "^1.0.2"
 
@@ -5780,6 +5772,11 @@
     "yaml" "^1.10.0"
     "yargs" "^17.0.1"
 
+"sweetalert2@^11.7.32":
+  "integrity" "sha512-44tNNe2oLe7T94mT6dus4hc9G7qg6jZU/K5qZzpNS6e5HGPrSF6Kie6oZ7B5puIJydB34V2h/8f5EhIFivYo4A=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.32.tgz"
+  "version" "11.7.32"
+
 "symbol-observable@^4.0.0":
   "integrity" "sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ=="
   "resolved" "https://registry.npmjs.org/symbol-observable/-/symbol-observable-4.0.0.tgz"
@@ -6279,8 +6276,3 @@
   "integrity" "sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ=="
   "resolved" "https://registry.npmjs.org/zen-observable/-/zen-observable-0.8.15.tgz"
   "version" "0.8.15"
-
-"zod@3.21.4":
-  "integrity" "sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw=="
-  "resolved" "https://registry.npmjs.org/zod/-/zod-3.21.4.tgz"
-  "version" "3.21.4"

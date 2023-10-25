@@ -13,7 +13,7 @@ const DeliveryPage = () => {
     <div>
         <h1 style={titleStyle}>Delivery</h1>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <DeliveryForm /> {/* Center-align the form */}
+        <DeliveryForm /> 
       </div>
     </div>
   );
