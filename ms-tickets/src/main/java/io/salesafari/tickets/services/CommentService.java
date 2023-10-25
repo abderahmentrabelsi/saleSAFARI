@@ -4,6 +4,7 @@ import io.salesafari.tickets.dto.CommentCreateDTO;
 import io.salesafari.tickets.dto.CommentReadDTO;
 import io.salesafari.tickets.entities.Comment;
 import io.salesafari.tickets.repositories.CommentRepository;
+import io.salesafari.tickets.repositories.TicketRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,15 @@ public class CommentService {
     private CommentRepository commentRepository;
 
     @Autowired
+    private TicketRepository ticketRepository;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     public CommentReadDTO createComment(CommentCreateDTO commentCreateDTO) {
         Comment comment = modelMapper.map(commentCreateDTO, Comment.class);
+        var ticket = ticketRepository.findById(commentCreateDTO.getTicketId()).orElseThrow(() -> new RuntimeException("Ticket not found"));
+        comment.setTicket(ticket);
         comment = commentRepository.save(comment);
         return modelMapper.map(comment, CommentReadDTO.class);
     }

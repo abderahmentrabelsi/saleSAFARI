@@ -4,42 +4,42 @@
  * @version v0
  */
 export type TicketCreateDTO = {
-  title?: string;
-  test?: string;
-  status?: string;
-  userId?: string;
+  title: string;
+  test: string;
+  status: string;
+  userId: string;
 };
 
 export type CommentReadDTO = {
   /**
    * @format int32
    */
-  id?: number;
-  text?: string;
-  userId?: string;
+  id: number;
+  text: string;
+  userId: string;
   /**
    * @format int32
    */
-  ticketId?: number;
+  ticketId: number;
 };
 
 export type TicketReadDTO = {
   /**
    * @format int32
    */
-  id?: number;
-  title?: string;
-  test?: string;
-  status?: string;
-  userId?: string;
-  comments?: CommentReadDTO[];
+  id: number;
+  title: string;
+  test: string;
+  status: string;
+  userId: string;
+  comments: CommentReadDTO[];
 };
 
 export type CommentCreateDTO = {
-  text?: string;
-  userId?: string;
+  text: string;
+  userId: string;
   /**
    * @format int32
    */
-  ticketId?: number;
+  ticketId: number;
 };

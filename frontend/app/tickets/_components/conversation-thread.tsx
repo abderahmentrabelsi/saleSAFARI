@@ -13,6 +13,7 @@ import { subtitle } from '@components/primitives';
 import { parseISO } from 'date-fns';
 import { UseMutationResult, useQueryClient } from '@tanstack/react-query';
 import { CommentReadDTO } from '@/app/tickets/_api/ticketSchemas';
+import { useSession } from 'next-auth/react';
 
 interface ConversationThreadProps {
   messages: CommentReadDTO[];
@@ -31,7 +32,7 @@ const ConversationThread: React.FC<ConversationThreadProps> = ({
   const { mutate: sendMessage, isLoading: isMessageSending } =
     useAddCommentMutation({});
   const [isMessageValid, setIsMessageValid] = useState<boolean>(false);
-
+  const { data: session } = useSession();
   useEffect(() => {
     setIsMessageValid(!!value && value.length > 1);
   }, [value]);
@@ -43,17 +44,16 @@ const ConversationThread: React.FC<ConversationThreadProps> = ({
     if (value) {
       sendMessage(
         {
-          pathParams: {
-            reportId: conversationId
-          },
           body: {
+            ticketId: conversationId,
+            userId: session?.user?.id,
             text: value
           }
         },
         {
           onSuccess: async (e) => {
             await queryClient.invalidateQueries({
-              predicate: (query) => query.queryKey[0] === 'reports'
+              predicate: (query) => query.queryKey[0] === 'tickets'
             });
           },
           onError: (e) => {

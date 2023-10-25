@@ -10,6 +10,7 @@ import React from 'react';
 import { EyeIcon } from '@nextui-org/shared-icons';
 import { TicketReadDTO } from '@/app/tickets/_api/ticketSchemas';
 import { TypegraphyColor } from '@/types';
+import { CreateTicketButton } from '@/app/tickets/_components/create-ticket-button';
 
 const RenderTicketCell: React.FC<RenderTableCellProps<TicketReadDTO>> = ({
   columnKey,
@@ -52,6 +53,7 @@ export default function TicketsPage() {
 
   return (
     <>
+      <CreateTicketButton />
       <PaginatedTable
         useQuery={useGetTicketByUserId}
         useQueryPathParams={{ userId: session.user.id }}

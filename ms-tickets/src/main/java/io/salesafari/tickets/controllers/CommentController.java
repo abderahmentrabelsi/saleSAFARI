@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 @RequestMapping("/comments")
 @Api(value = "Comment Management System")
 public class CommentController {

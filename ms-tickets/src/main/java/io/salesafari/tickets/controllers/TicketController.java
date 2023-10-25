@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 @RequestMapping("/tickets")
 @Api(value = "Ticket Management System")
 public class TicketController {
@@ -30,6 +31,12 @@ public class TicketController {
     @ApiOperation(value = "View a list of all tickets")
     public ResponseEntity<List<TicketReadDTO>> getAllTickets() {
         return new ResponseEntity<>(ticketService.getAllTickets(), HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{userId}")
+    @ApiOperation(value = "Get a ticket by its user id")
+    public ResponseEntity<List<TicketReadDTO>> getTicketByUserId(@PathVariable String userId) {
+        return new ResponseEntity<>(ticketService.getTicketByUserId(userId), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -51,11 +58,6 @@ public class TicketController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/user/{userId}")
-    @ApiOperation(value = "Get a ticket by its user id")
-    public ResponseEntity<List<TicketReadDTO>> getTicketByUserId(@PathVariable String userId) {
-        return new ResponseEntity<>(ticketService.getTicketByUserId(userId), HttpStatus.OK);
-    }
 
     @PutMapping("/{id}/status/{status}")
     @ApiOperation(value = "Update a ticket status")

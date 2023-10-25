@@ -72,7 +72,7 @@ export const CreateTicketModal: React.FC<CreateTicketModalProps> = ({
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              Create report
+              Create Ticket
             </ModalHeader>
             <ModalBody>
               <Select

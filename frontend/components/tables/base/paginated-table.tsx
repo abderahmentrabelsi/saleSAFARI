@@ -13,8 +13,11 @@ import {
   Card
 } from '@nextui-org/react';
 import { snakeCaseToHumanReadable } from '@utils/string-utils';
-import { IdentifiableSchema, PaginatedQuery } from '@/api/ticketCustomSchemas';
 import { CardBody } from '@nextui-org/card';
+import {
+  IdentifiableSchema,
+  PaginatedQuery
+} from '@/app/tickets/_api/ticketCustomSchemas';
 
 export interface RenderTableCellProps<
   T,
@@ -32,7 +35,7 @@ interface PaginatedTableProps<
   useQuery: PaginatedQuery<T, V>;
   RenderCell: React.FC<RenderTableCellProps<T, K>>;
   rowsPerPage?: number;
-  actions?: (id: string) => ReactNode;
+  actions?: (id: number) => ReactNode;
   excludeKeys?: Array<K>;
   useQueryPathParams?: V;
 }
@@ -69,7 +72,8 @@ const PaginatedTable = <
     if (rawData && actions) {
       return {
         ...rawData,
-        items: rawData.items.map((item: T) => ({
+        // @ts-ignore <-- gadma
+        items: rawData.map((item: T) => ({
           ...item,
           actions: actions(item.id)
         }))

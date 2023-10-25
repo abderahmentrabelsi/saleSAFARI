@@ -18,7 +18,7 @@ public class Comment extends AbstractPersistable<Integer> {
     private String text;
 
     @Column
-    private String user_id;
+    private String userId;
 
     @ManyToOne
     private Ticket ticket;

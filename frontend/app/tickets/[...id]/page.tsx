@@ -1,22 +1,22 @@
 'use client';
 
-import {
-  useAddCommentTicketsTicketIdCommentsPost,
-  useGetTicketTicketsTicketIdGet
-} from '@/api/apiComponents';
 import { Skeleton } from '@nextui-org/react';
-import { ConversationCard } from '@components/cards/conversation-card';
 import React from 'react';
 import { TicketActionsCard } from '@/app/tickets/_components/ticket-actions-card';
+import {
+  useCreateComment,
+  useGetTicketById
+} from '@/app/tickets/_api/ticketComponents';
+import { ConversationCard } from '@/app/tickets/_components/conversation-card';
 
 export default function TicketDetailsPage({
   params
 }: {
   params: { id: string };
 }) {
-  const { data, isLoading, isError } = useGetTicketTicketsTicketIdGet({
+  const { data, isLoading, isError } = useGetTicketById({
     pathParams: {
-      ticketId: params.id
+      id: parseInt(params.id)
     }
   });
 
@@ -25,14 +25,17 @@ export default function TicketDetailsPage({
   return (
     <>
       <div className="flex flex-col md:flex-row gap-2">
-        <div className="flex flex-col gap-1 max-w-sm">
-          <TicketActionsCard ticket_id={data.id} status={data.status} />
+        <div className="flex flex-col gap-1 min-w-[250px] max-w-sm">
+          <TicketActionsCard
+            ticket_id={data.id.toString()}
+            status={data.status}
+          />
         </div>
         <ConversationCard
-          id={data.id}
-          initial_text={data.initial_text}
+          id={data.id.toString()}
+          initial_text={data.test}
           comments={data.comments}
-          useNewMessageMutation={useAddCommentTicketsTicketIdCommentsPost}
+          useNewMessageMutation={useCreateComment}
         />
       </div>
     </>

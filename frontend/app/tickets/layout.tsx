@@ -7,9 +7,10 @@ export default function HomeLayout({
 }) {
   return (
     <>
-      {' '}
-      <h1 className={`${title({ size: 'sm' })}`}>My Tickets</h1>
-      <div className="flex flex-col gap-2">{children}</div>
+      <div className="flex flex-col gap-4">
+        <h1 className={`${title({ size: 'sm' })}`}>My Tickets</h1>
+        {children}
+      </div>
     </>
   );
 }
