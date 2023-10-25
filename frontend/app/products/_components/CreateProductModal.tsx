@@ -23,6 +23,7 @@ const CreateProductModal: React.FC<CreateProductModalProps> = ({
                                                                    onProductCreate,
                                                                }: CreateProductModalProps) => {
     const [productData, setProductData] = useState<Product>({
+        id: 0,
         name: '',
         description: '',
         price: 0,
