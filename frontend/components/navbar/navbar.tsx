@@ -17,6 +17,7 @@ import React from 'react';
 import { StaticNavbar } from '@/components/navbar/staticNavbarFragment';
 import { useSession } from 'next-auth/react';
 import { UserDropdown } from '@components/navbar/fragments/UserDropdown';
+import CartModal from '../cart';
 
 export const Navbar = () => {
   const { data: session, status } = useSession();
@@ -40,6 +41,9 @@ export const Navbar = () => {
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
           {status === 'authenticated' && session && <UserDropdown />}
+        </NavbarItem>
+        <NavbarItem className="hidden sm:flex gap-2">
+          <CartModal />
         </NavbarItem>
       </NavbarContent>
     </NextUINavbar>
