@@ -1,7 +1,12 @@
+// ProductCard.tsx
+
 import React, { useEffect, useState } from "react";
-import { Card, CardFooter, Image } from "@nextui-org/react";
+import { Card, CardFooter, Image, Button } from "@nextui-org/react";
+import Link from "next/link";
+import ProductModal from "./ProductModal"; // Import ProductModal component
 
 interface Product {
+    id: number;
     name: string;
     description: string;
     price: number;
@@ -21,26 +26,20 @@ const ProductCard: React.FC = () => {
 
     return (
         <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
-            {products.map((product, index) => (
-                <Card
-                    key={index}
-                    shadow="sm"
-                    isPressable
-                    onPress={() => console.log("item pressed")}
-                >
+            {products.map((product) => (
+                <Card key={product.id} shadow="sm" >
                     <Image
                         shadow="sm"
                         radius="lg"
-                        width="100%" // Set the image width to 100% to match the card width
+                        width="100%"
                         alt={product.name}
-                        className="w-full object-cover h-[140px]"
+                        className="w-full object-cover h-[300px]"
                         src={product.image}
                     />
-                    <CardFooter className="text-small justify-between">
-                        <h2>{product.name}</h2>
-                        <p>{product.description}</p>
-                        <p>Price: ${product.price.toFixed(2)}</p>
-                        <p>Rating: {product.rating}</p>
+                    <CardFooter className="text-small">
+                        <h2>Name:{product.name}  </h2>
+                        <p>  Price: ${product.price.toFixed(2)}</p>
+                        <ProductModal product={product} /> {/* Pass product details to ProductModal */}
                     </CardFooter>
                 </Card>
             ))}

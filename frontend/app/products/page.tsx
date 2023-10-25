@@ -1,9 +1,16 @@
 'use client';
+
+import React, { useState } from "react";
 import ProductCard from "./_components/ProductCard";
-import { useSession } from 'next-auth/react';
+import { useSession } from "next-auth/react";
 
 const ProductsPage: React.FC = () => {
     const { data: session } = useSession();
+    const [showProductForm, setShowProductForm] = useState(false);
+
+    const handleAddProductClick = () => {
+        setShowProductForm(true);
+    };
 
     return (
         <div>
@@ -13,6 +20,8 @@ const ProductsPage: React.FC = () => {
             ) : (
                 <h1>Unauthenticated. Please log in to view products.</h1>
             )}
+
+
         </div>
     );
 };
