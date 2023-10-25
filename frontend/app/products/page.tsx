@@ -1,13 +1,18 @@
-
 'use client';
-
-import ProductCard from "../products/ProductCard";
+import ProductCard from "./_components/ProductCard";
+import { useSession } from 'next-auth/react';
 
 const ProductsPage: React.FC = () => {
+    const { data: session } = useSession();
+
     return (
         <div>
             <h1>Products</h1>
-            <ProductCard />
+            {session ? (
+                <ProductCard />
+            ) : (
+                <h1>Unauthenticated. Please log in to view products.</h1>
+            )}
         </div>
     );
 };
