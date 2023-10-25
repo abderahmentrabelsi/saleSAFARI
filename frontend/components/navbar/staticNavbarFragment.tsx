@@ -26,7 +26,8 @@ const areas = [
     children: [
       { label: 'Home', path: '/' },
       { label: 'Orders', path: '/orders', absolute: true },
-      { label: 'Your Deliveries', path: '/showDeliveries', absolute: true }
+      { label: 'Your Deliveries', path: '/showDeliveries', absolute: true },
+      { label: 'Market', path: '/products', absolute: true },
     ]
   }
 ];

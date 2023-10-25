@@ -62,9 +62,6 @@ public class WishlistController extends AbstractCrudController<Wishlist, Wishlis
     }
 
 
-    @GetMapping("/all")
-    public List<WishlistDto> getAllWishlists() {
-        return wishlistService.getAllWishlists();
-    }
+
 
 }
