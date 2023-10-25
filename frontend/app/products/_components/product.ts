@@ -8,4 +8,6 @@ export interface Product {
     qty: number;
     slug: string;
     brand: string;
+    inWishlist: boolean;
+
 }
