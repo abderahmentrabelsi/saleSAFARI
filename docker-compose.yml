@@ -71,3 +71,13 @@ services:
         condition: service_started
       db-mysql:
         condition: service_healthy
+
+
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_db:/data/db
