@@ -9,5 +9,5 @@ export interface Product {
     slug: string;
     brand: string;
     inWishlist: boolean;
-
+    inCart: boolean;
 }
