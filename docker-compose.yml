@@ -56,19 +56,30 @@ services:
         condition: service_healthy
 
   db-nest:
-    image: mongo
+    hostname: db-nest
+    image: bitnami/mongodb:latest
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+      - MONGODB_USERNAME=nest
+      - MONGODB_PASSWORD=nest
+      - MONGODB_DATABASE=nest
+      - MONGODB_ROOT_PASSWORD=nest
     ports:
       - "27019:27017"
     healthcheck:
-      test: ["CMD","mongosh", "--eval", "db.adminCommand('ping')"]
-      interval: 5s
-      timeout: 5s
-      retries: 3
-      start_period: 5s
+      test:
+        [
+          "CMD",
+          "mongo",
+          "--quiet",
+          "127.0.0.1/test",
+          "--eval",
+          "'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
 
   ms-nest:
     container_name: sale-safari-api
@@ -78,8 +89,8 @@ services:
     ports:
       - "4747:4747"
     environment:
-      - EUREKA_SERVICE_URL=http://eureka-server:8761/eureka
-      - MONGO_URL=mongodb://root:root@db-nest:27017/nest?authSource=admin
+      - EUREKA_HOST=eureka-server
+      - MONGO_URI=mongodb://root:nest@db-nest:27017/nest?authSource=admin
       - KEYCLOAK_AUTH_SERVER_URL=https://keycloak.mkadmi.tech/auth
       - KEYCLOAK_REALM=master
       - KEYCLOAK_CLIENT_ID=nest-api
@@ -87,29 +98,31 @@ services:
     depends_on:
       eureka-server:
         condition: service_started
-      db-nest:
-        condition: service_healthy
-
-  frontend:
-    container_name: frontend
-    hostname: frontend
-    build:
-      context: ./frontend
-    ports:
-      - "3000:3000"
-    environment:
-      - KEYCLOAK_URL=https://keycloak.mkadmi.tech/auth
-      - KEYCLOAK_REALM=master
-      - KEYCLOAK_CLIENT_ID=nest-api
-      - KEYCLOAK_CLIENT_SECRET=R59s4jf2laeYwjNvhk1UkucQMdhnnxej
-      - NEXT_PUBLIC_NEST_API_URL=http://apigateway/API/
-      - NEXT_PUBLIC_TICKETS_API_URL=http://apigateway/TICKETS/
-    depends_on:
       ms-nest:
         condition: service_started
-      ms-tickets:
-        condition: service_started
 
+  # frontend:
+  #   container_name: frontend
+  #   hostname: frontend
+  #   build:
+  #     context: ./frontend
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - KEYCLOAK_URL=https://keycloak.mkadmi.tech/auth
+  #     - KEYCLOAK_REALM=master
+  #     - KEYCLOAK_CLIENT_ID=nest-api
+  #     - KEYCLOAK_CLIENT_SECRET=R59s4jf2laeYwjNvhk1UkucQMdhnnxej
+  #     - NEXT_PUBLIC_NEST_API_URL=http://apigateway/API/
+  #     - NEXT_PUBLIC_TICKETS_API_URL=http://apigateway/TICKETS/
+  #   depends_on:
+  #     ms-nest:
+  #       condition: service_started
+  #     ms-tickets:
+  #       condition: service_started
+
+
+  # -----------------------------------------
   # Eureka:
   #   container_name: eureka
   #   hostname: serviceregistry

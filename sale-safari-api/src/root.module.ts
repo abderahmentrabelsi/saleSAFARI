@@ -15,18 +15,23 @@ import { AutomatedResponseModule } from './modules/openai/automated-response-mod
     OpenAIModule.register({
       apiKey: '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',
     }),
-    EurekaModule.forRoot({
-      eureka: {
-        host: 'localhost',
-        port: 8761,
-        registryFetchInterval: 1000,
-        servicePath: '/eureka/apps',
-        maxRetries: 3,
-      },
-      service: {
-        name: 'api',
-        port: 4747,
-        host: 'localhost',
+    EurekaModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        return {
+          eureka: {
+            host: configService.get<string>('EUREKA_HOST') ?? 'eureka-server',
+            port: 8761,
+            registryFetchInterval: 1000,
+            servicePath: '/eureka/apps',
+            maxRetries: 3,
+          },
+          service: {
+            name: 'api',
+            port: 4747,
+            host: 'localhost',
+          },
+        };
       },
     }),
     MongooseModule.forRootAsync({
