@@ -54,6 +54,23 @@ services:
         condition: service_started
       db-tickets:
         condition: service_healthy
+  ms-market:
+    container_name: ms-market
+    hostname: ms-market
+    build:
+      context: ./Market_MS
+    ports:
+      - "8082:8082"
+    environment:
+      - EUREKA_SERVICE_URL=http://eureka-server:8761/eureka
+      - TICKETS_MYSQL_URL=jdbc:mysql://db-tickets:3306/tickets?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - TICKETS_MYSQL_USER=root
+      - TICKETS_MYSQL_PASSWORD=root
+    depends_on:
+      eureka-server:
+        condition: service_started
+      db-tickets:
+        condition: service_healthy
 
   db-nest:
     image: mongo
