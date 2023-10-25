@@ -1,6 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query';
 
-export type IdentifiableSchema = { id: string };
+export type IdentifiableSchema = { id: number };
 export interface PaginatedQueryParams<
   TPathParams extends Record<string, string> = Record<string, string>
 > {

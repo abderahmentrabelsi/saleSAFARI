@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule, MongooseModuleFactoryOptions } from '@nestjs/mongoose';
-import { TestModule } from './modules/test/test.module';
 // import { KeycloakModule } from './common/keycloak/keycloak.module';  <-- commented because moved to the gateway
 import { EurekaModule } from 'nestjs-eureka';
+import { OpenAIModule } from '@platohq/nestjs-openai';
 
 @Module({
   imports: [
@@ -11,6 +11,9 @@ import { EurekaModule } from 'nestjs-eureka';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
+    }),
+    OpenAIModule.register({
+      apiKey: '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',
     }),
     EurekaModule.forRoot({
       eureka: {
@@ -37,7 +40,7 @@ import { EurekaModule } from 'nestjs-eureka';
         } as MongooseModuleFactoryOptions;
       },
     }),
-    TestModule,
+    OpenAIModule,
   ],
   controllers: [],
   providers: [],
