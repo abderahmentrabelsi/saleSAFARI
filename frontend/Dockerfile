@@ -4,8 +4,11 @@ FROM node:18-alpine AS base
 # Set the working directory
 WORKDIR /app
 
-COPY .next/standalone ./
-COPY .next/static  ./.next/static
+COPY . .
+
+COPY /.next/standalone ./
+COPY /.next/static ./.next/static
+
 
 EXPOSE 3000
 
