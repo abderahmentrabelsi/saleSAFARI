@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardFooter, Image, Button } from "@nextui-org/react";
 import { Product } from './product'; // Import the Product type
-import CreateProductModal from './CreateProductModal'; // Import the CreateProductModal component
+import CreateProductModal from './CreateProductModal';
+import ProductModal from "@/app/products/_components/ProductModal"; // Import the CreateProductModal component
 
 const ProductCard: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
@@ -62,6 +63,7 @@ const ProductCard: React.FC = () => {
                             <h2>Name: {product.name}</h2>
                             <p>Price: ${product.price.toFixed(2)}</p>
                         </CardFooter>
+                        <ProductModal product={product} />
                     </Card>
                 ))}
             </div>
