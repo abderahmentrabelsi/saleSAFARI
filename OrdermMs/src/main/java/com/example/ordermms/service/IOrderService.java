@@ -15,4 +15,5 @@ public interface IOrderService {
     Order getOrder(Long id);
 
 
+    List<Order> getOrderByUserId(String id);
 }

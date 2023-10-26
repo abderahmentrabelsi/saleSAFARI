@@ -41,6 +41,11 @@ public class OrderServiceIMPL implements IOrderService{
             orderRepository.deleteById(id);
     }
 
+    @Override
+       public List<Order> getOrderByUserId(String id) {
+        return orderRepository.findByCustomerid(id);
+    }
+
 
 
 
