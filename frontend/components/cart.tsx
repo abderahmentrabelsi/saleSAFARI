@@ -7,13 +7,43 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
-  Image
+  Image,
+  dataFocusVisibleClasses
 } from '@nextui-org/react';
 import { CartIcon } from './icons';
+import { useSession } from 'next-auth/react';
+import { QueryClient, useMutation, useQuery } from '@tanstack/react-query';
+import { Product } from '@/app/products/_components/product';
+import axios from 'axios';
 
 export default function CartModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [size, setSize] = React.useState('md');
+  const { data: session } = useSession();
+  const queryClient = new QueryClient();
+  const { data: products, isLoading } = useQuery({
+    queryKey: ['getCart'],
+    queryFn: async () => {
+      const response = await fetch(
+        `http://localhost:8089/getCart?userId=${session?.user?.id}`
+      );
+      const data = await response.json();
+      console.log(data);
+      return data;
+    }
+  });
+
+  const { mutate: clear } = useMutation({
+    mutationKey: ['clearCart'],
+    mutationFn: async () => {
+      await axios.delete(
+        `http://localhost:8089/clearCart?userId=${session?.user?.id}`
+      );
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['getCart']);
+    }
+  });
 
   const sizes = [
     'xs',
@@ -54,48 +84,33 @@ export default function CartModal() {
               </ModalHeader>
               <ModalBody>
                 <div className="flex flex-col gap-3 p-10">
-                  <div className="flex flex-row justify-between items-center">
-                    <div className="flex flex-col gap-1">
-                      <div>Product 1</div>
-                      <div>Price: $10</div>
-                      <div>Quantity: 1</div>
-                    </div>
-                    <Image
-                      isZoomed
-                      width={100}
-                      height={100}
-                      alt="Product 1 Image with Zoom"
-                      src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
-                    />
+                  <div className="flex flex-col items-center gap-5">
+                    {session && products && products.products ? (
+                      products.products.map((product: Product) => (
+                        <div
+                          key={product.name}
+                          className="flex flex-row items-center gap-5"
+                          style={{ marginBottom: '10px' }}
+                        >
+                          <Image
+                            isZoomed
+                            width={100}
+                            height={100}
+                            alt={`Product ${product.name} Image with Zoom`}
+                            src={product.image}
+                          />
+                          <div className="flex flex-col gap-1">
+                            <div>{product.name}</div>
+                            <div>Price: ${product.price}</div>
+                            <div>Quantity: 1</div>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <div>Cart is empty</div>
+                    )}
                   </div>
-                  <div className="flex flex-row justify-between items-center">
-                    <div className="flex flex-col gap-1">
-                      <div>Product 2</div>
-                      <div>Price: $20</div>
-                      <div>Quantity: 1</div>
-                    </div>
-                    <Image
-                      isZoomed
-                      width={100}
-                      height={100}
-                      alt="Product 2 Image with Zoom"
-                      src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg"
-                    />
-                  </div>
-                  <div className="flex flex-row justify-between items-center">
-                    <div className="flex flex-col gap-1">
-                      <div>Product 3</div>
-                      <div>Price: $30</div>
-                      <div>Quantity: 1</div>
-                    </div>
-                    <Image
-                      isZoomed
-                      width={100}
-                      height={100}
-                      alt="Product 3 Image with Zoom"
-                      src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-03.jpg"
-                    />
-                  </div>
+
                   <div className="flex flex-row pt-5 items-center justify-center">
                     {/* <Button
                       color="secondary"
@@ -107,7 +122,7 @@ export default function CartModal() {
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-white-900">
                         <p>Subtotal</p>
-                        <p>$262.00</p>
+                        <p>${products.cartTotal}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.
@@ -121,16 +136,14 @@ export default function CartModal() {
                         </a>
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                        <p>
-                          or
-                          <button
-                            type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                          >
-                            Continue Shopping
-                            <span aria-hidden="true"> &rarr;</span>
-                          </button>
-                        </p>
+                        <Button
+                          color="danger"
+                          variant="bordered"
+                          startContent={<CartIcon />}
+                          onPress={() => clear()}
+                        >
+                          Clear Cart
+                        </Button>
                       </div>
                     </div>
                   </div>

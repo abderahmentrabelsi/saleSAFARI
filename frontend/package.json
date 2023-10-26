@@ -11,6 +11,7 @@
     "gen-tickets-client": "npx openapi-codegen gen tickets"
   },
   "dependencies": {
+    "@nextui-org/card": "^2.0.21",
     "@nextui-org/code": "^2.0.19",
     "@nextui-org/link": "^2.0.22",
     "@nextui-org/navbar": "^2.0.22",
