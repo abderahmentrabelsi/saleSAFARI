@@ -8,8 +8,12 @@ import com.example.market_ms.repository.ProductRepository;
 import com.example.market_ms.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+//import wishlistdto
+import com.example.market_ms.dto.WishlistDto;
+//Import modelmapper
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WishlistService extends AbstractCrudService<Wishlist> {
@@ -46,4 +50,8 @@ public class WishlistService extends AbstractCrudService<Wishlist> {
             }
         }
     }
+
+
+
+
 }

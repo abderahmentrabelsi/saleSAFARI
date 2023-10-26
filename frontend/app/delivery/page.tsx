@@ -1,6 +1,7 @@
+'use client';
+
 import React from 'react';
 import DeliveryForm from './deliveryForm';
-
 
 export default function delivery() {
   return (

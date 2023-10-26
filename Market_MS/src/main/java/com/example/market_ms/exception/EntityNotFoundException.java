@@ -2,7 +2,7 @@ package com.example.market_ms.exception;
 
 import lombok.Getter;
 
-public class EntityNotFoundException extends javax.persistence.EntityNotFoundException {
+public class EntityNotFoundException extends jakarta.persistence.EntityNotFoundException {
 
     @Getter
     private ErrorCodes errorCode;
