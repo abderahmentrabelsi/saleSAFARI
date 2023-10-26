@@ -176,7 +176,10 @@ export default function CartModal() {
                       <div className="mt-6">
                         <a
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                          onClick={createOrder}
+                          onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+                            event.preventDefault();
+                            createOrder();
+                          }}
                         >
                           Checkout
                         </a>
