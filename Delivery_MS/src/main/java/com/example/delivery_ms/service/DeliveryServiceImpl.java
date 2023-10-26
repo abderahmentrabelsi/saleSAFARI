@@ -8,6 +8,7 @@ import com.example.delivery_ms.serviceInterface.IDeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,7 +62,7 @@ public class DeliveryServiceImpl implements IDeliveryService {
         if (existingDelivery.isPresent()) {
             // Update the fields of the existing delivery with the new values
             Delivery updatedDelivery = existingDelivery.get();
-            updatedDelivery.setRecipientName(delivery.getRecipientName());
+            updatedDelivery.setRecipientname(delivery.getRecipientname());
             updatedDelivery.setDeliveryAddress(delivery.getDeliveryAddress());
             updatedDelivery.setDeliveryCost(delivery.getDeliveryCost());
             updatedDelivery.setIsDelivered(delivery.isDelivered());
@@ -81,6 +82,23 @@ public class DeliveryServiceImpl implements IDeliveryService {
             return true;
         } else {
             return false; // Delivery not found
+        }
+    }
+
+    @Override
+    public List<Delivery> getDeliveriesByEmail(String nom) {
+        return deliveryRepository.findByRecipientname(nom);
+    }
+
+    @Override
+    public void markAsDelivered(Long id) {
+        Optional<Delivery> deliveryOptional = deliveryRepository.findById(id);
+        if (deliveryOptional.isPresent()) {
+            Delivery delivery = deliveryOptional.get();
+            delivery.setIsDelivered(true);
+            deliveryRepository.save(delivery);
+        } else {
+            throw new EntityNotFoundException("Delivery not found with id: " + id);
         }
     }
 }

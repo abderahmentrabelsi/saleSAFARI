@@ -15,7 +15,6 @@ const keycloakConfig = {
 
 const authOptions: NextAuthOptions = {
   providers: [KeycloakProvider(keycloakConfig)],
-  secret: '40f9ec2f623f6b44bd4a6733c3736d7c',
   callbacks: {
     async jwt({ token, user, account, profile, isNewUser }) {
       if (account?.access_token) {

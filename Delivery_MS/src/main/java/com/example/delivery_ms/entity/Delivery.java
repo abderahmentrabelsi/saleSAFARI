@@ -29,7 +29,7 @@ public class Delivery implements Serializable {
     private Long id;
 
     @Column
-    private String recipientName;
+    private String recipientname;
 
     @Column
     private String deliveryAddress;
@@ -52,8 +52,8 @@ public class Delivery implements Serializable {
         return id;
     }
 
-    public String getRecipientName() {
-        return recipientName;
+    public String getRecipientname() {
+        return recipientname;
     }
 
     public String getDeliveryAddress() {
@@ -76,8 +76,8 @@ public class Delivery implements Serializable {
         this.id = id;
     }
 
-    public void setRecipientName(String recipientName) {
-        this.recipientName = recipientName;
+    public void setRecipientname(String recipientName) {
+        this.recipientname = recipientName;
     }
 
     public void setDeliveryAddress(String deliveryAddress) {

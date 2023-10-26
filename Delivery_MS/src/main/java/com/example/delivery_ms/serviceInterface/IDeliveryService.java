@@ -14,4 +14,9 @@ public interface IDeliveryService {
     Delivery updateDelivery(Long id, Delivery delivery);
 
     boolean deleteDelivery(Long id);
+
+    List<Delivery> getDeliveriesByEmail(String nom);
+
+    void markAsDelivered(Long id);
+
 }

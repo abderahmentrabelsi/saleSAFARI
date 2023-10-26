@@ -19,8 +19,8 @@ const areas = [
     name: 'Seller Area',
     uri: '/offer',
     children: [
-        { label: 'Home', path: '/' },
-        { label: 'Join Us', path: '/' }
+      { label: 'Home', path: '/' },
+      { label: 'Join Us', path: '/' }
     ]
   },
   {
@@ -29,16 +29,15 @@ const areas = [
     children: [
       { label: 'Home', path: '/' },
       { label: 'Orders', path: '/orders', absolute: true },
-        { label: 'Market', path: '/products', absolute: true },
+      { label: 'Your Deliveries', path: '/showDeliveries', absolute: true },
+      { label: 'Market', path: '/products', absolute: true },
+      { label: 'Tickets', path: '/ticket', absolute: true }
     ]
   },
   {
     name: 'Offers',
     uri: '/offers',
-    children: [
-      { label: 'List', path: '/' },
-
-    ]
+    children: [{ label: 'List', path: '/' }]
   }
 ];
 

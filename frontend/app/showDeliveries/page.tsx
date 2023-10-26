@@ -1,10 +1,8 @@
-'use client';
-
 import React from 'react';
-import DeliveryForm from './deliveryForm';
+import DeliveryShow from './deliveryShow';
 import { title } from '@components/primitives';
 
-const DeliveryPage = () => {
+const DeliveryShowPage = () => {
   const titleStyle = {
     textAlign: 'center', // Center-align the title
     fontSize: '36px', // Increase the font size
@@ -13,12 +11,13 @@ const DeliveryPage = () => {
 
   return (
     <div>
-      <h1 className={title()}>Delivery</h1>
+      <h1 className={title()}>Your Deliveries</h1>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <DeliveryForm />
+        <DeliveryShow />
       </div>
     </div>
   );
 };
 
-export default DeliveryPage;
+export default DeliveryShowPage;
+
