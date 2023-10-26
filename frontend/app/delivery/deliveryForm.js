@@ -22,8 +22,7 @@ const DeliveryForm = () => {
 
   const fetchCouriers = async () => {
     try {
-      const courierUrl = 'http://localhost:8088/couriers';
-      const response = await axios.get(courierUrl);
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/couriers` , { headers: { 'Authorization': `Bearer ${data.access_token}` } } );
       setCouriers(response.data);
     } catch (error) {
       console.error('Error fetching couriers:', error);
@@ -32,11 +31,11 @@ const DeliveryForm = () => {
 
   const fetchUserDeliveries = async () => {
     try {
-      const apiUrl = `http://localhost:8088/deliveries/byName/${data?.user.name}`;
-      // const headers = {
-      //   'Authorization': `Bearer ${data.access_token}`,
-      // };
-      const response = await axios.get(apiUrl);
+      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/byName/${data?.user.name}`;
+      const headers = {
+        'Authorization': `Bearer ${data.access_token}`,
+      };
+      const response = await axios.get(apiUrl , { headers });
       setDeliveries(response.data);
     } catch (error) {
       console.error('Error fetching user deliveries:', error);
@@ -58,7 +57,7 @@ const DeliveryForm = () => {
     };
 
     try {
-      const apiUrl = 'http://localhost:8088/deliveries';
+      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries`;
 
       const headers = {
         'Authorization': `Bearer ${data.access_token}`,
@@ -75,7 +74,7 @@ const DeliveryForm = () => {
 
   const markAsDelivered = async (deliveryId) => {
     try {
-      await axios.put(`http://localhost:8088/deliveries/${deliveryId}/markAsDelivered`);
+      await axios.put(`${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/${deliveryId}/markAsDelivered` , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
       setDelivered(true);
     } catch (error) {
       console.error('Error marking delivery as delivered:', error);
@@ -85,7 +84,7 @@ const DeliveryForm = () => {
 
   const deleteDelivery = async (deliveryId) => {
     try {
-      const apiUrl = `http://localhost:8088/deliveries/${deliveryId}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/${deliveryId}`;
       const headers = {
         'Authorization': `Bearer ${data.access_token}`,
       };
@@ -98,9 +97,9 @@ const DeliveryForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (data?.user.name) {
-        const apiUrl = `http://localhost:8088/deliveries/byName/${data?.user.name}`;
+        const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/byName/${data?.user.name}`;
         try {
-          const response = await axios.get(apiUrl);
+          const response = await axios.get(apiUrl , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
           console.log('Deliveries fetched successfully:', response.data);
           setDeliveries(response.data);
         } catch (error) {
