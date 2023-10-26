@@ -1,13 +1,13 @@
-import { Body, Controller, Get } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { OpenaiService } from './openai.service';
 import { ApiOperation } from '@nestjs/swagger';
 import { PromptDto } from './openai.dto';
 
-@Controller('sa ')
+@Controller('/openai')
 export class OpenaiController {
   constructor(private readonly appService: OpenaiService) {}
 
-  @Get()
+  @Post('/answer')
   @ApiOperation({ summary: 'Get Automatic Answer' })
   async getHello(@Body() body: PromptDto): Promise<PromptDto> {
     const answer = await this.appService.getAnswerForComplaint(body.text);

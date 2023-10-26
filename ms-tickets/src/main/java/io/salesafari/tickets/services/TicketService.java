@@ -2,7 +2,10 @@ package io.salesafari.tickets.services;
 
 import io.salesafari.tickets.dto.TicketCreateDTO;
 import io.salesafari.tickets.dto.TicketReadDTO;
+import io.salesafari.tickets.entities.Comment;
 import io.salesafari.tickets.entities.Ticket;
+import io.salesafari.tickets.listeners.TicketEntityListener;
+import io.salesafari.tickets.repositories.CommentRepository;
 import io.salesafari.tickets.repositories.TicketRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +21,23 @@ public class TicketService {
     private TicketRepository ticketRepository;
 
     @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     public TicketReadDTO createTicket(TicketCreateDTO ticketCreateDTO) {
         Ticket ticket = modelMapper.map(ticketCreateDTO, Ticket.class);
         ticket = ticketRepository.save(ticket);
+
+        String response = TicketEntityListener.callRemoteEndpoint(ticketCreateDTO.getTest());
+        Comment comment = new Comment();
+        comment.setText(response);
+        comment.setTicket(ticket);
+        comment.setUserId(ticket.getUserId());
+
+        commentRepository.save(comment);
+
         return modelMapper.map(ticket, TicketReadDTO.class);
     }
 

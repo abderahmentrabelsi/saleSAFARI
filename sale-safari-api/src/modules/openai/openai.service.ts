@@ -23,13 +23,16 @@ export class OpenaiService {
   }
 
   async getAnswerForComplaint(text: string) {
-    const { data } = await this.openAIClient.createCompletion({
-      model: 'gpt-3.5-turbo',
-      max_tokens: 1000,
-      temperature: 0.8,
-      prompt: this.createPrompt(text),
-    });
-
-    return data.object;
+    try {
+      const { data } = await this.openAIClient.createCompletion({
+        model: 'gpt-3.5-turbo',
+        max_tokens: 2048,
+        temperature: 0.8,
+        prompt: this.createPrompt(text),
+      });
+      return data.object;
+    } catch (e) {
+      return "We're sorry to hear that. We'll get back to you as soon as possible. Thank you for your patience. Please let us know if you have any other questions or concerns.";
+    }
   }
 }

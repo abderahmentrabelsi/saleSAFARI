@@ -4,13 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-import io.salesafari.tickets.listeners.TicketEntityListener;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "tickets")
-@EntityListeners(TicketEntityListener.class)
 public class Ticket extends AbstractPersistable<Integer> {
     @Column
     private String title;
