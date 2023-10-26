@@ -143,7 +143,8 @@ services:
       - NEXT_PUBLIC_NEST_API_URL=http://apigateway/API/
       - NEXT_PUBLIC_TICKETS_API_URL=http://apigateway/TICKETS/
       - NEXT_PUBLIC_CART_API_URL=http://apigateway/CARTMS/
-      - NEXT_PUBLIC_DELIVERY_API_URL=http://apigateway/MSDELIVERY/
+      - NEXT_PUBLIC_DELIVERY_API_URL=http://apigateway/DELIVERYMS/
+      - NEXT_PUBLIC_ORDER_API_URL=http://apigateway/ORDERMS/
 
   # ms-cart:
   #   container_name: Cart-MS
@@ -172,6 +173,20 @@ services:
     depends_on:
       eureka-server:
         condition: service_started
+
+ms-order:
+    container_name: Order-MS
+    build:
+      context: ./OrdermMS
+    ports:
+      - "9001:9001"
+    environment:
+        - EUREKA_SERVICE_URL= http://eureka-server:8761/eureka
+        - SPRING_PROFILES_ACTIVE= dev
+        - SPRING_DATASOURCE_URL= jdbc:h2:mem:cartdb
+    depends_on:
+      eureka-server:
+         condition: service_started
 
   # -----------------------------------------
   # Eureka:

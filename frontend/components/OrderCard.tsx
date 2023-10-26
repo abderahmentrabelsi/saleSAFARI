@@ -23,9 +23,10 @@ interface Order {
 export default function OrderCard ({userId}: {userId: string})
  {
     const [orders, setOrders] = useState<Order[]>([]);
+    const { data: session } = useSession();
     async function fetchOrders() {
       try {
-        const response = await fetch(`http://localhost:8088/order/getbyuserid/${userId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_ORDER_API_URL}/${userId}` , { headers: { 'Authorization': `Bearer ${session?.access_token}` }});
         const data = await response.json();
         setOrders(data);
         console.log(data);
@@ -38,13 +39,11 @@ export default function OrderCard ({userId}: {userId: string})
     fetchOrders();
     }, []);
     
-    const deleteDelivery = async (orderId:number) => {
+    const deleteDelivery = async (orderId: number) => {
       try {
-        const apiUrl =` http://localhost:8088/order/del/${orderId}`;
-        // const headers = {
-        //   'Authorization': Bearer ${data.access_token},
-        // };
-        await axios.delete(apiUrl);
+        const apiUrl = `${process.env.NEXT_PUBLIC_ORDER_API_URL}/order/del/${orderId}`;
+        
+        await axios.delete(apiUrl, { headers: { 'Authorization': `Bearer ${session?.access_token}` }});
       } catch (error) {
         console.error('Error deleting delivery:', error);
       }
