@@ -13,7 +13,7 @@ const DeliveryPage = () => {
 
   return (
     <div>
-      <h1 className={title()}>Delivery</h1>
+        <h1>Delivery</h1>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <DeliveryForm />
       </div>

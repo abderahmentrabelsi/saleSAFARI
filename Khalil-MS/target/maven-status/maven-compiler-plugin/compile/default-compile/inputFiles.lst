@@ -1,15 +1,15 @@
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\service\khalil\ClaimServiceImpl.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\ClaimSubject.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\service\khalil\OfferServiceImpl.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\controller\khalil\ClaimRestController.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\serviceInterface\khalil\IClaimService.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\controller\khalil\OfferRestController.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\BnsApplication.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\BadWord.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\serviceInterface\khalil\IOfferService.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\Offer.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\Claim.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\SMS.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\repository\khalil\OfferRepository.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\BusinessType.java
-C:\Users\USER\Desktop\saleSafary\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\repository\khalil\ClaimRepository.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\controller\khalil\OfferRestController.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\Offer.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\SMS.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\repository\khalil\ClaimRepository.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\repository\khalil\OfferRepository.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\ClaimSubject.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\controller\khalil\ClaimRestController.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\BusinessType.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\BnsApplication.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\serviceInterface\khalil\IClaimService.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\Claim.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\service\khalil\ClaimServiceImpl.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\entity\khalil\BadWord.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\service\khalil\OfferServiceImpl.java
+C:\Users\MSI\Desktop\SaleSafari Project\MsProect\saleSAFARI\Khalil-MS\src\main\java\tn\esprit\pidev\bns\serviceInterface\khalil\IOfferService.java
