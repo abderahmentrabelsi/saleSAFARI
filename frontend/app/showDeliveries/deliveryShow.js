@@ -6,6 +6,7 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from 
 import Swal from 'sweetalert2';
 import { Button } from '@mui/material';
 import { useSession } from 'next-auth/react';
+import { head } from 'lodash';
 
 const DeliveryShow = () => {
   const [deliveries, setDeliveries] = useState([]);
@@ -74,6 +75,9 @@ const DeliveryShow = () => {
     const fetchData = async () => {
       if (data?.user.name) {
         const apiUrl = `http://localhost:8088/deliveries/byName/${data?.user.name}`;
+        // const header = {
+        //     'Authorization': `Bearer ${data.access_token}`,
+        //     };
         try {
           const response = await axios.get(apiUrl);
           console.log('Deliveries fetched successfully:', response.data);
