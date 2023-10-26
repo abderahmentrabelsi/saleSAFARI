@@ -32,7 +32,7 @@ services:
     ports:
       - "3308:3306"
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-proot"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
       interval: 3s
       timeout: 3s
       retries: 30
@@ -127,7 +127,6 @@ services:
       eureka-server:
         condition: service_started
 
-
   frontend:
     container_name: frontend
     hostname: frontend
@@ -148,6 +147,19 @@ services:
       ms-tickets:
         condition: service_started
 
+  ms-cart:
+    container_name: Cart-MS
+    build:
+      context: ./Cart-MS
+    ports:
+      - "8086:8086"
+    environment:
+      - EUREKA_SERVICE_URL= http://eureka-server:8761/eureka
+      - SPRING_PROFILES_ACTIVE= dev
+      - SPRING_DATASOURCE_URL= jdbc:h2:mem:cartdb
+    depends_on:
+      eureka-server:
+        condition: service_started
 
   # -----------------------------------------
   # Eureka:
@@ -193,7 +205,6 @@ services:
   #     db-mysql:
   #       condition: service_healthy
 
-
   # candidats:
   #   container_name: candidats
   #   hostname: candidats
@@ -212,7 +223,6 @@ services:
   #       condition: service_started
   #     db-mysql:
   #       condition: service_healthy
-
 
   # mongo_db:
   #   container_name: db_container
