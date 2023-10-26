@@ -11,7 +11,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
 
     mutationFn: async () => {
       await axios.post(
-        `http://localhost:8089/addToCart?userId=${session?.user?.id}`,
+        `${process.env.NEXT_PUBLIC_CART_API_URL}/addToCart?userId=${session?.user?.id}`,
         product,
         {
           headers: {
