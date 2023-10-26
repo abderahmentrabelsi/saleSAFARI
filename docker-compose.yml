@@ -1,64 +1,65 @@
 version: "3.9"
 services:
-  # eureka-server:
-  #   container_name: eureka-server
-  #   hostname: eureka-server
-  #   build:
-  #     context: ./eurekaserver
-  #   ports:
-  #     - "8761:8761"
-  #   healthcheck:
-  #     test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
-  #     interval: 2s
-  #     timeout: 3s
-  #     retries: 30
+  eureka-server:
+    container_name: eureka-server
+    hostname: eureka-server
+    build:
+      context: ./eurekaserver
+    ports:
+      - "8761:8761"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
 
-  # apigateway:
-  #   container_name: apigateway
-  #   hostname: apigateway
-  #   build:
-  #     context: ./apigateway
-  #   ports:
-  #     - "8081:8081"
-  #   environment:
-  #     - EUREKA_SERVICE_URL=http://eureka-server:8761/eureka
-  #   depends_on:
-  #     eureka-server:
-  #       condition: service_healthy
+  apigateway:
+    container_name: apigateway
+    hostname: apigateway
+    build:
+      context: ./apigateway
+    ports:
+      - "8081:8081"
+    environment:
+      - EUREKA_SERVICE_URL=http://eureka-server:8761/eureka
+    depends_on:
+      eureka-server:
+        condition: service_healthy
 
-  # db-tickets:
-  #   container_name: db-tickets
-  #   hostname: db-tickets
-  #   image: mysql/mysql-server:latest
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=root
-  #     - MYSQL_ROOT_HOST=%
-  #   command: --default-authentication-plugin=mysql_native_password
-  #   ports:
-  #     - "3308:3306"
-  #   healthcheck:
-  #     test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-proot"]
-  #     interval: 2s
-  #     timeout: 3s
-  #     retries: 30
+  db-tickets:
+    container_name: db-tickets
+    hostname: db-tickets
+    image: mysql/mysql-server:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_HOST=%
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3308:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
 
-  # ms-tickets:
-  #   container_name: ms-tickets
-  #   hostname: ms-tickets
-  #   build:
-  #     context: ./ms-tickets
-  #   ports:
-  #     - "8089:8089"
-  #   environment:
-  #     - EUREKA_SERVICE_URL=http://eureka-server:8761/eureka
-  #     - TICKETS_MYSQL_URL=jdbc:mysql://db-tickets:3306/tickets?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-  #     - TICKETS_MYSQL_USER=root
-  #     - TICKETS_MYSQL_PASSWORD=root
-  #   depends_on:
-  #     eureka-server:
-  #       condition: service_healthy
-  #     db-tickets:
-  #       condition: service_healthy
+  ms-tickets:
+    container_name: ms-tickets
+    hostname: ms-tickets
+    build:
+      context: ./ms-tickets
+    ports:
+      - "8089:8089"
+    environment:
+      - EUREKA_SERVICE_URL=http://eureka-server:8761/eureka
+      - TICKETS_MYSQL_URL=jdbc:mysql://db-tickets:3306/tickets?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - TICKETS_MYSQL_USER=root
+      - TICKETS_MYSQL_PASSWORD=root
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      db-tickets:
+        condition: service_healthy
+
   # ms-market:
   #   container_name: ms-market
   #   hostname: ms-market
@@ -126,24 +127,24 @@ services:
   #     db-nest:
   #       condition: service_healthy
 
-  frontend:
-    container_name: frontend
-    hostname: frontend
-    build:
-      context: ./frontend
-    ports:
-      - "3000:3000"
-    environment:
-      - NEXTAUTH_SECRET=useJDBCCompliantTimezoneShift
-      - NEXTAUTH_URL=http://localhost:3000/api/auth
-      - KEYCLOAK_URL=https://keycloak.mkadmi.tech/auth
-      - KEYCLOAK_REALM=master
-      - KEYCLOAK_CLIENT_ID=nest-api
-      - KEYCLOAK_CLIENT_SECRET=R59s4jf2laeYwjNvhk1UkucQMdhnnxej
-      - NEXT_PUBLIC_NEST_API_URL=http://apigateway/API/
-      - NEXT_PUBLIC_TICKETS_API_URL=http://apigateway/TICKETS/
-      - NEXT_PUBLIC_CART_API_URL=http://apigateway/CARTMS/
-      - NEXT_PUBLIC_DELIVERY_API_URL=http://apigateway/MSDELIVERY/
+  # frontend:
+  #   container_name: frontend
+  #   hostname: frontend
+  #   build:
+  #     context: ./frontend
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NEXTAUTH_SECRET=useJDBCCompliantTimezoneShift
+  #     - NEXTAUTH_URL=http://localhost:3000/api/auth
+  #     - KEYCLOAK_URL=https://keycloak.mkadmi.tech/auth
+  #     - KEYCLOAK_REALM=master
+  #     - KEYCLOAK_CLIENT_ID=nest-api
+  #     - KEYCLOAK_CLIENT_SECRET=R59s4jf2laeYwjNvhk1UkucQMdhnnxej
+  #     - NEXT_PUBLIC_NEST_API_URL=http://apigateway/API/
+  #     - NEXT_PUBLIC_TICKETS_API_URL=http://apigateway/TICKETS/
+  #     - NEXT_PUBLIC_CART_API_URL=http://apigateway/CARTMS/
+  #     - NEXT_PUBLIC_DELIVERY_API_URL=http://apigateway/MSDELIVERY/
 
   # ms-cart:
   #   container_name: Cart-MS
@@ -159,19 +160,19 @@ services:
   #     eureka-server:
   #       condition: service_started
 
-  ms-delivery:
-    container_name: Delivery-MS
-    build:
-      context: ./Delivery_MS
-    ports:
-      - "8088:8088"
-    environment:
-      - EUREKA_SERVICE_URL= http://eureka-server:8761/eureka
-      - SPRING_PROFILES_ACTIVE= dev
-      - SPRING_DATASOURCE_URL= jdbc:h2:file:./saleSAFARI/Delivery_MS/src/main/java/com/example/delivery_ms/DataBase/deliverydb
-    depends_on:
-      eureka-server:
-        condition: service_started
+  # ms-delivery:
+  #   container_name: Delivery-MS
+  #   build:
+  #     context: ./Delivery_MS
+  #   ports:
+  #     - "8088:8088"
+  #   environment:
+  #     - EUREKA_SERVICE_URL= http://eureka-server:8761/eureka
+  #     - SPRING_PROFILES_ACTIVE= dev
+  #     - SPRING_DATASOURCE_URL= jdbc:h2:file:./saleSAFARI/Delivery_MS/src/main/java/com/example/delivery_ms/DataBase/deliverydb
+  #   depends_on:
+  #     eureka-server:
+  #       condition: service_started
 
   # -----------------------------------------
   # Eureka:
