@@ -10,11 +10,10 @@ const ProductCard: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [showProductForm, setShowProductForm] = useState(false);
 
-    const baseUrl = process.env.NEXT_PUBLIC_PRODUCTS_API_URL!;
 
     useEffect(() => {
         // Fetch products from your API endpoint
-        fetch("${baseUrl}/products")
+        fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/products`)
             .then((response) => response.json())
             .then((data: Product[]) => setProducts(data));
     }, []);
@@ -25,7 +24,7 @@ const ProductCard: React.FC = () => {
 
     const handleProductCreate = (newProduct: Product) => {
         // Send a POST request to add the new product to your API
-        fetch("${baseUrl}/products", {
+        fetch(`${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/products`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
