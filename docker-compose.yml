@@ -169,6 +169,20 @@ services:
       eureka-server:
          condition: service_started
 
+ms-order:
+    container_name: Order-MS
+    build:
+      context: ./OrdermMS
+    ports:
+      - "9001:9001"
+    environment:
+        - EUREKA_SERVICE_URL= http://eureka-server:8761/eureka
+        - SPRING_PROFILES_ACTIVE= dev
+        - SPRING_DATASOURCE_URL= jdbc:h2:mem:cartdb
+    depends_on:
+      eureka-server:
+         condition: service_started
+
   # -----------------------------------------
   # Eureka:
   #   container_name: eureka
