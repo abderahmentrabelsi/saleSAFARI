@@ -3,7 +3,7 @@ import { OpenaiService } from './openai.service';
 import { ApiOperation } from '@nestjs/swagger';
 import { PromptDto } from './openai.dto';
 
-@Controller('/openai')
+@Controller('sa ')
 export class OpenaiController {
   constructor(private readonly appService: OpenaiService) {}
 
