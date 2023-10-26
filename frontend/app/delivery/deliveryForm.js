@@ -22,7 +22,7 @@ const DeliveryForm = () => {
 
   const fetchCouriers = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/couriers` , { headers: { 'Authorization': `Bearer ${data.access_token}` } } );
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/couriers` , { headers: { 'Authorization': `Bearer ${data.access_token}` } } );
       setCouriers(response.data);
     } catch (error) {
       console.error('Error fetching couriers:', error);
@@ -31,7 +31,7 @@ const DeliveryForm = () => {
 
   const fetchUserDeliveries = async () => {
     try {
-      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/byName/${data?.user.name}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/byName/${data?.user.name}`;
       const headers = {
         'Authorization': `Bearer ${data.access_token}`,
       };
@@ -57,7 +57,7 @@ const DeliveryForm = () => {
     };
 
     try {
-      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries`;
 
       const headers = {
         'Authorization': `Bearer ${data.access_token}`,
@@ -74,7 +74,7 @@ const DeliveryForm = () => {
 
   const markAsDelivered = async (deliveryId) => {
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/${deliveryId}/markAsDelivered` , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
+      await axios.put(`${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/${deliveryId}/markAsDelivered` , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
       setDelivered(true);
     } catch (error) {
       console.error('Error marking delivery as delivered:', error);
@@ -84,7 +84,7 @@ const DeliveryForm = () => {
 
   const deleteDelivery = async (deliveryId) => {
     try {
-      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/${deliveryId}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/${deliveryId}`;
       const headers = {
         'Authorization': `Bearer ${data.access_token}`,
       };
@@ -97,7 +97,7 @@ const DeliveryForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (data?.user.name) {
-        const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/byName/${data?.user.name}`;
+        const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/byName/${data?.user.name}`;
         try {
           const response = await axios.get(apiUrl , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
           console.log('Deliveries fetched successfully:', response.data);

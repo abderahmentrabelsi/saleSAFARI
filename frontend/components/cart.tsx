@@ -11,10 +11,10 @@ import {
   dataFocusVisibleClasses
 } from '@nextui-org/react';
 import { CartIcon } from './icons';
-import { useSession } from 'next-auth/react';
 import { QueryClient, useMutation, useQuery } from '@tanstack/react-query';
 import { Product } from '@/app/products/_components/product';
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 
 export default function CartModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -29,7 +29,7 @@ export default function CartModal() {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + session?.user?.token
+            Authorization: 'Bearer ' + session?.user?.accessToken
           }
         }
       );
@@ -47,7 +47,7 @@ export default function CartModal() {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + session?.user?.token
+            Authorization: 'Bearer ' + session?.user?.accessToken
           }
         }
       );

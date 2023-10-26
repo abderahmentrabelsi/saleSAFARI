@@ -14,7 +14,7 @@ const DeliveryShow = () => {
 
     const markAsDelivered = async (deliveryId) => {
         try {
-          await axios.put(`${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/${deliveryId}/markAsDelivered` , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
+          await axios.put(`${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/${deliveryId}/markAsDelivered` , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
           fetchUserDeliveries();
         } catch (error) {
           console.error('Error marking delivery as delivered:', error);
@@ -23,7 +23,7 @@ const DeliveryShow = () => {
     
       const deleteDelivery = async (deliveryId) => {
         try {
-          const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/${deliveryId}`;
+          const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/${deliveryId}`;
           await axios.delete(apiUrl , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
           fetchUserDeliveries();
         } catch (error) {
@@ -33,7 +33,7 @@ const DeliveryShow = () => {
 
   const fetchUserDeliveries = async () => {
     try {
-      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/byName/${data?.user.name}`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/byName/${data?.user.name}`;
       const response = await axios.get(apiUrl , { headers: { 'Authorization': `Bearer ${data.access_token}` } });
       setDeliveries(response.data);
     } catch (error) {
@@ -74,7 +74,7 @@ const DeliveryShow = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (data?.user.name) {
-        const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_MS_URL}/deliveries/byName/${data?.user.name}`;
+        const apiUrl = `${process.env.NEXT_PUBLIC_DELIVERY_API_URL}/deliveries/byName/${data?.user.name}`;
         // const header = {
         //     'Authorization': `Bearer ${data.access_token}`,
         //     };
