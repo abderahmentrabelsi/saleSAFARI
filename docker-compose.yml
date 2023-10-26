@@ -143,8 +143,7 @@ services:
       - NEXT_PUBLIC_NEST_API_URL=http://apigateway/API/
       - NEXT_PUBLIC_TICKETS_API_URL=http://apigateway/TICKETS/
       - NEXT_PUBLIC_CART_API_URL=http://apigateway/CARTMS/
-      - NEXT_PUBLIC_DELIVERY_API_URL=http://apigateway/DELIVERYMS/
-      - NEXT_PUBLIC_ORDER_API_URL=http://apigateway/ORDERMS/
+      - NEXT_PUBLIC_DELIVERY_API_URL=http://apigateway/MSDELIVERY/
 
   # ms-cart:
   #   container_name: Cart-MS

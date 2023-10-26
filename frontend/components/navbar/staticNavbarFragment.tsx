@@ -31,7 +31,7 @@ const areas = [
       { label: 'Orders', path: '/orders', absolute: true },
       { label: 'Your Deliveries', path: '/showDeliveries', absolute: true },
       { label: 'Market', path: '/products', absolute: true },
-      { label: 'Tickets', path: '/ticket', absolute: true }
+      { label: 'Tickets', path: '/tickets', absolute: true }
     ]
   },
   {
