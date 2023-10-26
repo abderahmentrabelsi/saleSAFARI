@@ -13,8 +13,7 @@ import {
     Input,
     Link,
 } from "@nextui-org/react";
-import { MailIcon } from "./MailIcon.jsx";
-import { LockIcon } from "./LockIcon.jsx";
+
 
 interface Product {
     id: number;
