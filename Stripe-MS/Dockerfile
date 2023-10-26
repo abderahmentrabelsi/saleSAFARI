@@ -13,4 +13,4 @@ COPY . .
 EXPOSE 4000
 
 # Start the application
-CMD ["yarn", "start"]
+CMD ["yarn", "gadma"]
