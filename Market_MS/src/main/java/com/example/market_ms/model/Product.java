@@ -1,8 +1,8 @@
 package com.example.market_ms.model;
 import com.example.market_ms.lib.AbstractEntity;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,13 +10,13 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Builder
 @ToString
+@Entity
 public class Product extends AbstractEntity<Product> implements Serializable {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY) // Auto-generated value
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generated value
     private Integer id;
 
     @Column// Specify the column name

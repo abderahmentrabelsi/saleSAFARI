@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 /**
