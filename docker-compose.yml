@@ -115,28 +115,27 @@ services:
     depends_on:
       eureka-server:
         condition: service_started
+
+
+  frontend:
+    container_name: frontend
+    hostname: frontend
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - KEYCLOAK_URL=https://keycloak.mkadmi.tech/auth
+      - KEYCLOAK_REALM=master
+      - KEYCLOAK_CLIENT_ID=nest-api
+      - KEYCLOAK_CLIENT_SECRET=R59s4jf2laeYwjNvhk1UkucQMdhnnxej
+      - NEXT_PUBLIC_NEST_API_URL=http://apigateway/API/
+      - NEXT_PUBLIC_TICKETS_API_URL=http://apigateway/TICKETS/
+    depends_on:
       ms-nest:
         condition: service_started
-
-  # frontend:
-  #   container_name: frontend
-  #   hostname: frontend
-  #   build:
-  #     context: ./frontend
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     - KEYCLOAK_URL=https://keycloak.mkadmi.tech/auth
-  #     - KEYCLOAK_REALM=master
-  #     - KEYCLOAK_CLIENT_ID=nest-api
-  #     - KEYCLOAK_CLIENT_SECRET=R59s4jf2laeYwjNvhk1UkucQMdhnnxej
-  #     - NEXT_PUBLIC_NEST_API_URL=http://apigateway/API/
-  #     - NEXT_PUBLIC_TICKETS_API_URL=http://apigateway/TICKETS/
-  #   depends_on:
-  #     ms-nest:
-  #       condition: service_started
-  #     ms-tickets:
-  #       condition: service_started
+      ms-tickets:
+        condition: service_started
 
 
   # -----------------------------------------
