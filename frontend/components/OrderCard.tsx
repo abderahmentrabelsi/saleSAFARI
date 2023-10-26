@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import {
   Button,
+  Link,
   Table,
   TableBody,
   TableCell,
@@ -97,6 +98,11 @@ export default function OrderCard({ userId }: { userId: string }) {
                 >
                   Delete
                 </Button>
+                <Link href="/delivery">
+                  <Button color="primary" variant="bordered">
+                    Add delivery
+                  </Button>
+                </Link>
               </TableCell>
             </TableRow>
           ))}
