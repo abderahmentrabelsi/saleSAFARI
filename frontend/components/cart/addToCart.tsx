@@ -3,6 +3,7 @@ import { Button } from '@nextui-org/react';
 import { useMutation } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 export default function AddToCartButton({ product }: { product: Product }) {
   const { data: session } = useSession();
@@ -25,6 +26,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
       alert('Added to cart!');
     }
   });
+ 
 
   const handleClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>

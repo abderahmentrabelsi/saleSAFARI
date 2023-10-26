@@ -15,6 +15,7 @@ import { QueryClient, useMutation, useQuery } from '@tanstack/react-query';
 import { Product } from '@/app/products/_components/product';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export default function CartModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,6 +58,39 @@ export default function CartModal() {
     }
   });
 
+  const newOrder = {
+    customerId: session?.user?.id,
+    productId: products && [products[0].id],
+    quantity: 1,
+    price: products && products[0].price,
+    total: products && products[0].price * products[0].qty,
+    status: 'Pending',
+    date: new Date().toISOString().slice(0, 19).replace('T', ' '),
+    address: 'El Ghazela',
+    payment: 'Credit Card'
+  };
+  const { mutate: createOrder } = useMutation({
+    mutationKey: ['createOrder'],
+
+    mutationFn: async () => {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_ORDER_API_URL}/orders/createOrder`,
+        newOrder,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + session?.user?.accessToken
+          }
+        }
+      );
+    },
+    onSuccess: () => {
+      // navigate to /orders
+      const router = useRouter();
+      router.push('/orders');
+    }
+  });
+
   const sizes = [
     'xs',
     'sm',
@@ -89,7 +123,7 @@ export default function CartModal() {
         scrollBehavior="inside"
       >
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <>
               <ModalHeader className="flex flex-col gap-1 text-center">
                 My Shopping Cart
@@ -134,15 +168,15 @@ export default function CartModal() {
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-white-900">
                         <p>Subtotal</p>
-                        <p>${products.cartTotal}</p>
+                        <p>{products ? '$' + products.cartTotal : '$0'}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.
                       </p>
                       <div className="mt-6">
                         <a
-                          href="#"
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                          onClick={createOrder}
                         >
                           Checkout
                         </a>
