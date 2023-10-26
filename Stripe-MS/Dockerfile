@@ -12,5 +12,6 @@ COPY . .
 # Expose the application port
 EXPOSE 4000
 
+ENV NODE_ENV=development
 # Start the application
-CMD ["yarn", "gadma"]
+CMD ["npm", "run", "gadma"]
