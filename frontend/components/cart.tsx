@@ -60,10 +60,11 @@ export default function CartModal() {
 
   const newOrder = {
     customerId: session?.user?.id,
-    productId: products && [products[0].id],
+    productId: products && products.length > 0 ? [products[0].id] : 0,
     quantity: 1,
-    price: products && products[0].price,
-    total: products && products[0].price * products[0].qty,
+    price: products && products.length > 0 ? products[0].price : 0,
+    total:
+      products && products.length > 0 ? products[0].price * products[0].qty : 0 ,
     status: 'Pending',
     date: new Date().toISOString().slice(0, 19).replace('T', ' '),
     address: 'El Ghazela',
@@ -176,7 +177,12 @@ export default function CartModal() {
                       <div className="mt-6">
                         <a
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                          onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+                          onClick={(
+                            event: React.MouseEvent<
+                              HTMLAnchorElement,
+                              MouseEvent
+                            >
+                          ) => {
                             event.preventDefault();
                             createOrder();
                           }}

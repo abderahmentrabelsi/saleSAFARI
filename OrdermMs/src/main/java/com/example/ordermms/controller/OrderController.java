@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.ordermms.service.IOrderService;
 
 import java.util.List;
-@CrossOrigin(origins = "*",maxAge = 3600)
+@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/order")
 @Slf4j

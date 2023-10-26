@@ -34,8 +34,7 @@ export default function OrderCard({ userId }: { userId: string }) {
   async function fetchOrders() {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_ORDER_API_URL}/${userId}`,
-        { headers: { Authorization: `Bearer ${session?.access_token}` } }
+        `${process.env.NEXT_PUBLIC_ORDER_API_URL}/order/getAll`
       );
       const data = await response.json();
       setOrders(data);
