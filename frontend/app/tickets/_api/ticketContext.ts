@@ -1,5 +1,7 @@
 import type { QueryKey, UseQueryOptions } from '@tanstack/react-query';
 import { QueryOperation } from './ticketComponents';
+import { useSession } from 'next-auth/react';
+import { useMemo } from 'react';
 
 export type TicketContext = {
   fetcherOptions: {
@@ -41,9 +43,21 @@ export function useTicketContext<
     'queryKey' | 'queryFn'
   >
 ): TicketContext {
+  const { data, status } = useSession();
+
+  const authToken = useMemo(() => {
+    if (!data) return undefined;
+    return data.access_token;
+  }, [data]);
   return {
-    fetcherOptions: {},
-    queryOptions: {},
+    fetcherOptions: {
+      headers: {
+        authorization: authToken ? `Bearer ${authToken}` : undefined
+      }
+    },
+    queryOptions: {
+      enabled: !!authToken
+    },
     queryKeyFn
   };
 }
