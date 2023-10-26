@@ -72,6 +72,17 @@ services:
       db-tickets:
         condition: service_healthy
 
+  NodeJsApp:
+    container_name: nodejs-app
+    image: stripe-ms  # Use the image name you assigned when building the Node.js app
+    ports:
+      - "4000:4000"
+    depends_on:
+      eureka-server:
+        condition: service_started
+
+
+
   db-nest:
     hostname: db-nest
     image: bitnami/mongodb:latest
