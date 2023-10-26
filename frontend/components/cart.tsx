@@ -29,7 +29,7 @@ export default function CartModal() {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + session?.user?.token
+            Authorization: 'Bearer ' + session?.user
           }
         }
       );
@@ -47,7 +47,7 @@ export default function CartModal() {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + session?.user?.token
+            Authorization: 'Bearer ' + session?.user
           }
         }
       );
