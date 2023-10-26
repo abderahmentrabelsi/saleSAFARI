@@ -17,7 +17,7 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "customer_id")
-    private Long customerId;
+    private String customerid;
     @ElementCollection
     @Column(name = "product_id")
     private List<String> productId;
@@ -40,8 +40,8 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setCustomerId(String customerid) {
+        this.customerid = customerid;
     }
 
     public void setProductId(List<String> productId) {
