@@ -11,7 +11,7 @@ const DeliveryShowPage = () => {
 
   return (
     <div>
-        <h1 style={titleStyle}>Your Deliveries</h1>
+        <h1>Your Deliveries</h1>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <DeliveryShow /> 
       </div>

@@ -158,7 +158,7 @@ services:
   ms-delivery:
     container_name: Delivery-MS
     build:
-      context: ./Delivery-MS
+      context: ./Delivery_MS
     ports:
       - "8088:8088"
     environment:

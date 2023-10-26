@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MsKhalil" />
+        <module name="Khalil-MS" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -17,6 +18,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Candidate" options="-parameters" />
+      <module name="Khalil-MS" options="-parameters" />
       <module name="MsKhalil" options="-parameters" />
     </option>
   </component>
