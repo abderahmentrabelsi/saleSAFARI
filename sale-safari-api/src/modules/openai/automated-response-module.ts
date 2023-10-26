@@ -6,5 +6,6 @@ import { OpenaiService } from './openai.service';
   imports: [],
   controllers: [OpenaiController],
   providers: [OpenaiService],
+  exports: [OpenaiService],
 })
-export class OpenaiModule {}
+export class AutomatedResponseModule {}

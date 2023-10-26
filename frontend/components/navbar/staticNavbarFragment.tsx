@@ -17,8 +17,11 @@ import { Link } from '@nextui-org/link';
 const areas = [
   {
     name: 'Seller Area',
-    uri: '/seller',
-    children: [{ label: 'Home', path: '/' }]
+    uri: '/offer',
+    children: [
+        { label: 'Home', path: '/' },
+        { label: 'Join Us', path: '/' }
+    ]
   },
   {
     name: 'Customer Area',
@@ -28,6 +31,14 @@ const areas = [
       { label: 'Orders', path: '/orders', absolute: true },
       { label: 'Your Deliveries', path: '/showDeliveries', absolute: true },
       { label: 'Market', path: '/products', absolute: true },
+    ]
+  },
+  {
+    name: 'Offers',
+    uri: '/offers',
+    children: [
+      { label: 'List', path: '/' },
+
     ]
   }
 ];

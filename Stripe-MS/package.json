@@ -20,8 +20,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check **/*.js",
-    "prettier:fix": "prettier --write **/*.js",
-    "prepare": "husky install"
+    "prettier:fix": "prettier --write **/*.js"
   },
   "keywords": [],
   "dependencies": {

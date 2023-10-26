@@ -1,27 +1,14 @@
-FROM node:18-alpine AS builder
+# Use the base image with Node.js
+FROM node:18-alpine AS base
+
+# Set the working directory
 WORKDIR /app
+
 COPY . .
 
-RUN yarn build
+COPY /.next/standalone ./
+COPY /.next/static ./.next/static
 
-FROM base AS runner
-WORKDIR /app
-
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder /app/public ./public
-
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
 
 EXPOSE 3000
 
@@ -29,4 +16,5 @@ ENV PORT 3000
 # set hostname to localhost
 ENV HOSTNAME "0.0.0.0"
 
+# Command to run the application
 CMD ["node", "server.js"]

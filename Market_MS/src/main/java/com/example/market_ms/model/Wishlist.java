@@ -2,7 +2,7 @@ package com.example.market_ms.model;
 import com.example.market_ms.lib.AbstractEntity;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 

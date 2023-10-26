@@ -1,8 +1,15 @@
+// @ts-ignore
 import { Module, Global } from '@nestjs/common';
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 import {
   KeycloakConnectModule,
   KeycloakConnectOptions,
 } from 'nest-keycloak-connect';
+// @ts-ignore
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Global()
