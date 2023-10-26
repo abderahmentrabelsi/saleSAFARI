@@ -10,7 +10,7 @@ const ProductCard: React.FC = () => {
 
     useEffect(() => {
         // Fetch products from your API endpoint
-        fetch("http://localhost:8082/products")
+        fetch("http://ms-market:8082/products")
             .then((response) => response.json())
             .then((data: Product[]) => setProducts(data));
     }, []);
@@ -21,7 +21,7 @@ const ProductCard: React.FC = () => {
 
     const handleProductCreate = (newProduct: Product) => {
         // Send a POST request to add the new product to your API
-        fetch("http://localhost:8082/products", {
+        fetch("http://ms-market:8082/products", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
