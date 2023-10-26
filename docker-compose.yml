@@ -7,6 +7,11 @@ services:
       context: ./eurekaserver
     ports:
       - "8761:8761"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
 
   apigateway:
     container_name: apigateway
@@ -19,7 +24,7 @@ services:
       - EUREKA_SERVICE_URL=http://eureka-server:8761/eureka
     depends_on:
       eureka-server:
-        condition: service_started
+        condition: service_healthy
 
   db-tickets:
     container_name: db-tickets
@@ -33,7 +38,7 @@ services:
       - "3308:3306"
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-proot"]
-      interval: 3s
+      interval: 2s
       timeout: 3s
       retries: 30
 
@@ -51,7 +56,7 @@ services:
       - TICKETS_MYSQL_PASSWORD=root
     depends_on:
       eureka-server:
-        condition: service_started
+        condition: service_healthy
       db-tickets:
         condition: service_healthy
   ms-market:
@@ -68,7 +73,7 @@ services:
       - TICKETS_MYSQL_PASSWORD=root
     depends_on:
       eureka-server:
-        condition: service_started
+        condition: service_healthy
       db-tickets:
         condition: service_healthy
 
@@ -81,7 +86,7 @@ services:
       - "4000:4000"
     depends_on:
       eureka-server:
-        condition: service_started
+        condition: service_healthy
 
   db-nest:
     hostname: db-nest
@@ -95,19 +100,11 @@ services:
     ports:
       - "27019:27017"
     healthcheck:
-      test:
-        [
-          "CMD",
-          "mongo",
-          "--quiet",
-          "127.0.0.1/test",
-          "--eval",
-          "'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'",
-        ]
-      interval: 10s
-      timeout: 10s
-      retries: 5
-      start_period: 40s
+      test: ["CMD","mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+      start_period: 5s
 
   ms-nest:
     container_name: sale-safari-api
@@ -125,7 +122,9 @@ services:
       - KEYCLOAK_CLIENT_SECRET=R59s4jf2laeYwjNvhk1UkucQMdhnnxej
     depends_on:
       eureka-server:
-        condition: service_started
+        condition: service_healthy
+      db-nest:
+        condition: service_healthy
 
 
   frontend:
@@ -142,11 +141,6 @@ services:
       - KEYCLOAK_CLIENT_SECRET=R59s4jf2laeYwjNvhk1UkucQMdhnnxej
       - NEXT_PUBLIC_NEST_API_URL=http://apigateway/API/
       - NEXT_PUBLIC_TICKETS_API_URL=http://apigateway/TICKETS/
-    depends_on:
-      ms-nest:
-        condition: service_started
-      ms-tickets:
-        condition: service_started
 
 
   # -----------------------------------------
