@@ -15,7 +15,8 @@ export default function AddToCartButton({ product }: { product: Product }) {
         product,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + session?.user?.token
           }
         }
       );

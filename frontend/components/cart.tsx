@@ -25,7 +25,13 @@ export default function CartModal() {
     queryKey: ['getCart'],
     queryFn: async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_CART_API_URL}/getCart?userId=${session?.user?.id}`
+        `${process.env.NEXT_PUBLIC_CART_API_URL}/getCart?userId=${session?.user?.id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + session?.user?.token
+          }
+        }
       );
       const data = await response.json();
       console.log(data);
@@ -37,7 +43,13 @@ export default function CartModal() {
     mutationKey: ['clearCart'],
     mutationFn: async () => {
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_CART_API_URL}/clearCart?userId=${session?.user?.id}`
+        `${process.env.NEXT_PUBLIC_CART_API_URL}/clearCart?userId=${session?.user?.id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + session?.user?.token
+          }
+        }
       );
     },
     onSuccess: () => {
