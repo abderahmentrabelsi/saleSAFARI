@@ -1,14 +1,16 @@
 package com.example.ordermms.controller;
 
 import com.example.ordermms.Entity.Order;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.ordermms.service.IOrderService;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController
 @RequestMapping("/order")
+@Slf4j
 public class OrderController {
 
     @Autowired
@@ -48,5 +50,12 @@ public class OrderController {
 
         orderService.deleteOrder(id);
 
+    }
+
+//get order by userID
+    @GetMapping("/getbyuserid/{id}")
+    public List<Order> getOrderByUserId(@PathVariable("id") String id) {
+        log.info(id);
+        return orderService.getOrderByUserId(id);
     }
 }
